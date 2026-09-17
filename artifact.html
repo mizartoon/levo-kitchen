@@ -1,0 +1,1550 @@
+<title>آشپزخانه‌ی لوو</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    direction: rtl;
+    color-scheme: light dark;
+
+    --cream: #faf4e8;
+    --cream-2: #f1e5d1;
+    --surface: #ffffff;
+    --surface-2: #fbf6ec;
+    --ink: #2a1e14;
+    --ink-2: #6b5844;
+    --ink-3: #7d6a52;
+    --line: rgba(42, 30, 20, 0.13);
+    --line-strong: rgba(42, 30, 20, 0.28);
+    --rust: #a3402f;
+    --rust-ink: #fdf3e8;
+    --terracotta: #c17d40;
+    --kraft: #8b5e37;
+    --sage: #62744f;
+    --plum: #8c4a63;
+    --shadow-sm: 0 2px 6px -3px rgba(42, 30, 20, 0.35);
+    --shadow-lg: 0 24px 50px -28px rgba(42, 30, 20, 0.6);
+
+    --honey-bg: #f6e6c4;  --honey-1: #b8722f;  --honey-2: #8b5e37;
+    --olive-bg: #e2e6d1;  --olive-1: #62744f;  --olive-2: #445235;
+    --ember-bg: #f2d9ce;  --ember-1: #a3402f;  --ember-2: #77291d;
+    --rose-bg:  #f1dbe2;  --rose-1:  #8c4a63;  --rose-2:  #632f45;
+    --cocoa-bg: #e8dacb;  --cocoa-1: #7a5240;  --cocoa-2: #4d3223;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --cream: #17110b;
+      --cream-2: #1f1810;
+      --surface: #221a11;
+      --surface-2: #2a2016;
+      --ink: #f4e7d3;
+      --ink-2: #cbb69a;
+      --ink-3: #a28f76;
+      --line: rgba(244, 231, 211, 0.14);
+      --line-strong: rgba(244, 231, 211, 0.3);
+      --rust: #d9705a;
+      --rust-ink: #22120d;
+      --terracotta: #d99a5c;
+      --kraft: #b9853f;
+      --sage: #9bb183;
+      --plum: #d08aa4;
+      --shadow-sm: 0 2px 6px -3px rgba(0, 0, 0, 0.7);
+      --shadow-lg: 0 24px 50px -28px rgba(0, 0, 0, 0.85);
+
+      --honey-bg: #3a2a15;  --honey-1: #e0a75e;  --honey-2: #c78e46;
+      --olive-bg: #26301c;  --olive-1: #a8bd90;  --olive-2: #8aa16f;
+      --ember-bg: #3a1c14;  --ember-1: #e08670;  --ember-2: #c26a54;
+      --rose-bg:  #35202a;  --rose-1:  #dd9ab2;  --rose-2:  #c07d95;
+      --cocoa-bg: #2e2117;  --cocoa-1: #c79a7e;  --cocoa-2: #a97f63;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --cream: #17110b;
+    --cream-2: #1f1810;
+    --surface: #221a11;
+    --surface-2: #2a2016;
+    --ink: #f4e7d3;
+    --ink-2: #cbb69a;
+    --ink-3: #a28f76;
+    --line: rgba(244, 231, 211, 0.14);
+    --line-strong: rgba(244, 231, 211, 0.3);
+    --rust: #d9705a;
+    --rust-ink: #22120d;
+    --terracotta: #d99a5c;
+    --kraft: #b9853f;
+    --sage: #9bb183;
+    --plum: #d08aa4;
+    --shadow-sm: 0 2px 6px -3px rgba(0, 0, 0, 0.7);
+    --shadow-lg: 0 24px 50px -28px rgba(0, 0, 0, 0.85);
+
+    --honey-bg: #3a2a15;  --honey-1: #e0a75e;  --honey-2: #c78e46;
+    --olive-bg: #26301c;  --olive-1: #a8bd90;  --olive-2: #8aa16f;
+    --ember-bg: #3a1c14;  --ember-1: #e08670;  --ember-2: #c26a54;
+    --rose-bg:  #35202a;  --rose-1:  #dd9ab2;  --rose-2:  #c07d95;
+    --cocoa-bg: #2e2117;  --cocoa-1: #c79a7e;  --cocoa-2: #a97f63;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button, input { font: inherit; color: inherit; }
+  button { cursor: pointer; border: 0; background: none; }
+  a { color: var(--rust); }
+
+  :focus-visible {
+    outline: 2px solid var(--rust);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  .app {
+    max-width: 540px;
+    margin-inline: auto;
+    min-height: 100%;
+    background: var(--cream);
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px;
+    background: color-mix(in srgb, var(--cream) 92%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand { display: flex; align-items: center; gap: 9px; }
+
+  .brand-mark {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--kraft);
+    display: grid; place-items: center;
+    flex: none;
+  }
+  .brand-mark svg { width: 21px; height: 21px; display: block; }
+
+  .brand-name {
+    font-family: 'Lalezar', 'Vazirmatn', sans-serif;
+    font-size: 1.22rem;
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+  .brand-sub {
+    display: block;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: .66rem;
+    letter-spacing: .12em;
+    color: var(--ink-3);
+    line-height: 1.4;
+  }
+
+  .icon-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink-2);
+    flex: none;
+  }
+  .icon-btn svg { width: 19px; height: 19px; display: block; }
+  .icon-btn.is-on { color: var(--rust); border-color: color-mix(in srgb, var(--rust) 45%, transparent); }
+
+  /* ---------- page scaffold ---------- */
+  .page { padding: 0 16px 108px; }
+  .page[hidden] { display: none !important; }
+
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 10px; margin: 26px 0 12px;
+  }
+  .section-head h2 {
+    font-family: 'Lalezar', 'Vazirmatn', sans-serif;
+    font-weight: 400; font-size: 1.22rem; margin: 0; line-height: 1.4;
+  }
+  .section-head .count { font-size: .78rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    margin-top: 16px;
+    padding: 20px 18px 18px;
+    border-radius: 20px;
+    background:
+      radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--terracotta) 22%, transparent), transparent 62%),
+      var(--surface-2);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .hero-kicker {
+    font-size: .68rem; letter-spacing: .16em; color: var(--kraft);
+    font-weight: 600; margin: 0 0 6px;
+  }
+  .hero h1 {
+    font-family: 'Lalezar', 'Vazirmatn', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 6.4vw, 1.95rem);
+    line-height: 1.45; margin: 0 0 8px; text-wrap: balance;
+    max-width: 17ch;
+  }
+  .hero p { margin: 0 0 16px; color: var(--ink-2); font-size: .89rem; max-width: 34ch; }
+
+  .shuffle {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--rust); color: var(--rust-ink);
+    padding: 11px 20px; border-radius: 999px;
+    font-weight: 600; font-size: .88rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform .15s ease;
+  }
+  .shuffle:active { transform: scale(.97); }
+  .shuffle svg { width: 17px; height: 17px; }
+
+  .hero-loaf {
+    position: absolute; inset-inline-start: -26px; bottom: -34px;
+    width: 148px; opacity: .13; color: var(--kraft); pointer-events: none;
+  }
+
+  /* ---------- search + filters ---------- */
+  .search {
+    display: flex; align-items: center; gap: 9px;
+    margin-top: 18px; padding: 0 14px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .search svg { width: 17px; height: 17px; color: var(--ink-3); flex: none; }
+  .search input {
+    flex: 1; min-width: 0; border: 0; background: none;
+    padding: 12px 0; font-size: .92rem; outline: none;
+  }
+  .search input::placeholder { color: var(--ink-3); }
+  .search button {
+    color: var(--ink-3); font-size: 1.15rem; line-height: 1;
+    padding: 4px 2px;
+  }
+
+  .rail {
+    display: flex; gap: 8px; overflow-x: auto; margin: 14px -16px 0;
+    padding: 2px 16px 6px; scrollbar-width: none;
+  }
+  .rail::-webkit-scrollbar { display: none; }
+
+  .chip {
+    flex: none; white-space: nowrap;
+    padding: 7px 15px; border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface); color: var(--ink-2);
+    font-size: .82rem; font-weight: 500;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--ink); color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  .filter-note {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; margin-top: 12px;
+    padding: 9px 13px; border-radius: 12px;
+    background: color-mix(in srgb, var(--terracotta) 15%, var(--surface));
+    border: 1px dashed color-mix(in srgb, var(--kraft) 45%, transparent);
+    font-size: .8rem; color: var(--ink-2);
+  }
+  .filter-note button { color: var(--rust); font-weight: 600; font-size: .8rem; flex: none; }
+
+  /* ---------- recipe grid ---------- */
+  .grid {
+    display: grid; gap: 12px; margin-top: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 359px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    display: flex; flex-direction: column; text-align: start;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 16px; overflow: hidden;
+    transition: transform .15s ease;
+  }
+  .card:active { transform: scale(.985); }
+
+  .card-art {
+    position: relative; aspect-ratio: 4 / 3; max-width: 100%;
+    background: var(--art-bg); display: grid; place-items: center;
+  }
+  .card-art svg { width: 78%; height: 78%; display: block; }
+
+  .fav {
+    position: absolute; inset-block-start: 7px; inset-inline-end: 7px;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    color: var(--ink-3); backdrop-filter: blur(4px);
+  }
+  .fav svg { width: 15px; height: 15px; }
+  .fav[aria-pressed="true"] { color: var(--rust); }
+  .fav[aria-pressed="true"] svg { fill: currentColor; }
+
+  .card-body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+  .card-title {
+    font-family: 'Lalezar', 'Vazirmatn', sans-serif; font-weight: 400;
+    font-size: 1rem; line-height: 1.5; margin: 0;
+  }
+  .card-sub { font-size: .76rem; color: var(--ink-2); line-height: 1.6; margin: 0; }
+  .card-meta {
+    margin-top: auto; padding-top: 7px; display: flex; align-items: center; gap: 6px;
+    font-size: .7rem; color: var(--ink-3); font-variant-numeric: tabular-nums;
+    border-top: 1px dashed var(--line);
+  }
+  .card-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: currentColor; flex: none; }
+  .card-meta span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .empty {
+    margin-top: 28px; padding: 30px 20px; text-align: center;
+    border: 1px dashed var(--line-strong); border-radius: 16px; color: var(--ink-2);
+  }
+  .empty strong { display: block; font-family: 'Lalezar', sans-serif; font-weight: 400; font-size: 1.05rem; margin-bottom: 5px; color: var(--ink); }
+  .empty p { margin: 0; font-size: .84rem; }
+
+  /* ---------- bread list ---------- */
+  .bread-list { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+
+  .bread {
+    display: flex; gap: 12px; align-items: flex-start; text-align: start;
+    padding: 12px; border-radius: 16px;
+    background: var(--surface); border: 1px solid var(--line);
+  }
+  .bread-art {
+    width: 62px; height: 62px; flex: none; border-radius: 12px;
+    background: var(--art-bg); display: grid; place-items: center;
+  }
+  .bread-art svg { width: 76%; height: 76%; }
+  .bread-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+  .bread-name { font-family: 'Lalezar', 'Vazirmatn', sans-serif; font-weight: 400; font-size: .99rem; margin: 0; line-height: 1.5; }
+  .bread-desc { font-size: .76rem; color: var(--ink-2); margin: 0; line-height: 1.65; }
+  .bread-foot { display: flex; align-items: center; gap: 8px; margin-top: 4px; font-size: .74rem; color: var(--ink-3); }
+  .price { font-weight: 600; color: var(--kraft); font-variant-numeric: tabular-nums; }
+
+  /* ---------- guide ---------- */
+  .note {
+    margin-top: 12px; padding: 16px; border-radius: 16px;
+    background: var(--surface); border: 1px solid var(--line);
+  }
+  .note h3 {
+    font-family: 'Lalezar', 'Vazirmatn', sans-serif; font-weight: 400;
+    font-size: 1.02rem; margin: 0 0 8px; display: flex; align-items: center; gap: 8px;
+  }
+  .note h3 svg { width: 18px; height: 18px; color: var(--terracotta); flex: none; }
+  .note p { margin: 0 0 9px; font-size: .85rem; color: var(--ink-2); }
+  .note p:last-child { margin-bottom: 0; }
+  .note strong { color: var(--ink); font-weight: 600; }
+
+  .kv { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; font-size: .84rem; }
+  .kv dt { color: var(--ink-2); padding: 7px 0; border-bottom: 1px dashed var(--line); }
+  .kv dd { margin: 0; padding: 7px 0; text-align: end; font-weight: 600; font-variant-numeric: tabular-nums; border-bottom: 1px dashed var(--line); }
+  .kv dt:last-of-type, .kv dd:last-of-type { border-bottom: 0; }
+
+  .steps-mini { margin: 0; padding: 0; list-style: none; counter-reset: s; display: flex; flex-direction: column; gap: 10px; }
+  .steps-mini li {
+    counter-increment: s; position: relative; padding-inline-start: 30px;
+    font-size: .85rem; color: var(--ink-2);
+  }
+  .steps-mini li::before {
+    content: counter(s); position: absolute; inset-inline-start: 0; top: 3px;
+    width: 21px; height: 21px; border-radius: 50%;
+    background: var(--cream-2); color: var(--kraft);
+    display: grid; place-items: center; font-size: .72rem; font-weight: 700;
+  }
+
+  /* ---------- bottom tabs ---------- */
+  .tabbar {
+    position: fixed; inset-inline: 0; bottom: 0; z-index: 50;
+    background: color-mix(in srgb, var(--cream) 94%, transparent);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--line);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .tabbar-inner {
+    max-width: 540px; margin-inline: auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .tab {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    padding: 9px 4px 10px; color: var(--ink-3); font-size: .68rem; font-weight: 500;
+  }
+  .tab svg { width: 21px; height: 21px; }
+  .tab[aria-selected="true"] { color: var(--rust); }
+  .tab .badge {
+    position: absolute; transform: translate(-13px, -4px);
+    min-width: 15px; height: 15px; padding: 0 4px; border-radius: 999px;
+    background: var(--rust); color: var(--rust-ink);
+    font-size: .6rem; font-weight: 700; display: grid; place-items: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- recipe sheet ---------- */
+  .sheet {
+    position: fixed; inset: 0; z-index: 60;
+    background: var(--cream);
+    overflow-y: auto; overscroll-behavior: contain;
+    animation: rise .22s ease-out;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+  @media (prefers-reduced-motion: reduce) { .sheet { animation: none; } }
+
+  .sheet-inner { max-width: 540px; margin-inline: auto; padding-bottom: 40px; }
+
+  .sheet-art {
+    position: relative; aspect-ratio: 16 / 10; max-width: 100%;
+    background: var(--art-bg); display: grid; place-items: center;
+  }
+  .sheet-art svg.hero-svg { width: 56%; height: 74%; }
+
+  .sheet-nav {
+    position: absolute; inset-block-start: 0; inset-inline: 0;
+    display: flex; justify-content: space-between; gap: 10px;
+    padding: calc(10px + env(safe-area-inset-top, 0px)) 14px 10px;
+  }
+
+  .sheet-head { padding: 18px 16px 0; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: .7rem; letter-spacing: .1em; font-weight: 600;
+    color: var(--kraft); margin-bottom: 6px;
+  }
+  .sheet-head h2 {
+    font-family: 'Lalezar', 'Vazirmatn', sans-serif; font-weight: 400;
+    font-size: 1.5rem; line-height: 1.45; margin: 0 0 6px; text-wrap: balance;
+  }
+  .sheet-head .lede { margin: 0; color: var(--ink-2); font-size: .88rem; }
+
+  .facts {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    margin: 16px 16px 0; border: 1px solid var(--line);
+    border-radius: 14px; overflow: hidden; background: var(--surface);
+  }
+  .fact { padding: 11px 8px; text-align: center; border-inline-start: 1px solid var(--line); }
+  .fact:first-child { border-inline-start: 0; }
+  .fact dt { font-size: .68rem; color: var(--ink-3); letter-spacing: .06em; }
+  .fact dd { margin: 2px 0 0; font-weight: 600; font-size: .86rem; font-variant-numeric: tabular-nums; }
+
+  .base-bread {
+    display: flex; align-items: center; gap: 11px;
+    margin: 12px 16px 0; padding: 11px 12px;
+    border-radius: 14px; background: var(--surface-2);
+    border: 1px solid var(--line);
+  }
+  .base-bread .bread-art { width: 46px; height: 46px; border-radius: 10px; }
+  .base-bread .t { flex: 1; min-width: 0; }
+  .base-bread .t span { display: block; font-size: .68rem; color: var(--ink-3); letter-spacing: .08em; }
+  .base-bread .t b { font-weight: 600; font-size: .87rem; display: block; line-height: 1.5; }
+  .order-btn {
+    flex: none; padding: 8px 14px; border-radius: 999px;
+    background: var(--ink); color: var(--cream);
+    font-size: .76rem; font-weight: 600; text-decoration: none;
+  }
+
+  .sheet-section { padding: 0 16px; margin-top: 26px; }
+  .sheet-section > h3 {
+    font-family: 'Lalezar', 'Vazirmatn', sans-serif; font-weight: 400;
+    font-size: 1.12rem; margin: 0 0 4px;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  }
+  .sheet-section > h3 .hint { font-family: 'Vazirmatn', sans-serif; font-size: .72rem; color: var(--ink-3); font-weight: 400; }
+
+  .ing { list-style: none; margin: 8px 0 0; padding: 0; }
+  .ing li { border-bottom: 1px dashed var(--line); }
+  .ing li:last-child { border-bottom: 0; }
+  .ing label {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 9px 2px; font-size: .87rem; cursor: pointer;
+  }
+  .ing input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .ing .box {
+    width: 18px; height: 18px; flex: none; margin-top: 5px;
+    border: 1.5px solid var(--line-strong); border-radius: 5px;
+    display: grid; place-items: center; color: transparent;
+    transition: background .12s ease, border-color .12s ease;
+  }
+  .ing .box svg { width: 11px; height: 11px; }
+  .ing input:checked + .box { background: var(--sage); border-color: var(--sage); color: #fff; }
+  .ing input:checked ~ .txt { color: var(--ink-3); text-decoration: line-through; text-decoration-thickness: 1px; }
+  .ing input:focus-visible + .box { outline: 2px solid var(--rust); outline-offset: 2px; }
+  .ing .txt { transition: color .12s ease; }
+  .ing .amt { color: var(--kraft); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .steps { list-style: none; margin: 10px 0 0; padding: 0; counter-reset: st; }
+  .steps li {
+    counter-increment: st; position: relative;
+    padding: 0 34px 18px 0; font-size: .89rem; color: var(--ink-2);
+  }
+  .steps li::before {
+    content: counter(st); position: absolute; inset-inline-start: 0; top: 0;
+    width: 25px; height: 25px; border-radius: 50%;
+    background: var(--ink); color: var(--cream);
+    display: grid; place-items: center; font-size: .75rem; font-weight: 700;
+    font-family: 'Vazirmatn', sans-serif;
+  }
+  .steps li::after {
+    content: ""; position: absolute; inset-inline-start: 12px; top: 29px; bottom: 6px;
+    width: 1px; background: var(--line);
+  }
+  .steps li:last-child { padding-bottom: 0; }
+  .steps li:last-child::after { display: none; }
+
+  .tip {
+    margin: 16px 16px 0; padding: 14px 15px;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--terracotta) 14%, var(--surface));
+    border-inline-start: 3px solid var(--terracotta);
+  }
+  .tip b {
+    display: flex; align-items: center; gap: 7px;
+    font-family: 'Lalezar', 'Vazirmatn', sans-serif; font-weight: 400;
+    font-size: .95rem; margin-bottom: 4px;
+  }
+  .tip b svg { width: 16px; height: 16px; color: var(--terracotta); }
+  .tip p { margin: 0; font-size: .85rem; color: var(--ink-2); }
+
+  .related { display: flex; gap: 10px; overflow-x: auto; margin: 10px -16px 0; padding: 2px 16px 8px; scrollbar-width: none; }
+  .related::-webkit-scrollbar { display: none; }
+  .related .card { flex: none; width: 150px; }
+
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+
+<div class="app" id="app" dir="rtl" lang="fa">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#faf4e8" stroke-width="1.7" stroke-linecap="round">
+          <path d="M4.2 13.4c0-3.6 3.5-6.4 7.8-6.4s7.8 2.8 7.8 6.4c0 2.2-1.6 3.6-3.6 3.6H7.8c-2 0-3.6-1.4-3.6-3.6Z"/>
+          <path d="M9.4 8.1 8 16.4M12 7.6l-.6 9.1M14.6 8.1l1.4 8.3"/>
+        </svg>
+      </div>
+      <div>
+        <span class="brand-name">آشپزخانه‌ی لوو</span>
+        <span class="brand-sub">نانوایی خمیرترش</span>
+      </div>
+    </div>
+    <button class="icon-btn" id="installBtn" type="button" aria-label="نصب روی گوشی">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3v11m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="page" id="view-recipes">
+      <div class="hero">
+        <svg class="hero-loaf" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3 13.6C3 9.6 7 6.6 12 6.6s9 3 9 7c0 2.3-1.7 3.8-3.9 3.8H6.9C4.7 17.4 3 15.9 3 13.6Z"/>
+        </svg>
+        <p class="hero-kicker">دفترِ نانِ خانه</p>
+        <h1>امروز با نون لوو چی درست کنیم؟</h1>
+        <p>نونت رو انتخاب کن، بگو کدوم وعده‌ست، دستور کارش همین‌جاست.</p>
+        <button class="shuffle" type="button" id="shuffleBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/>
+          </svg>
+          یه چیز تصادفی پیشنهاد بده
+        </button>
+      </div>
+
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/>
+        </svg>
+        <input id="searchInput" type="search" placeholder="جست‌وجو بین دستورها و مواد لازم" aria-label="جست‌وجو">
+        <button type="button" id="clearSearch" hidden aria-label="پاک کردن جست‌وجو">✕</button>
+      </div>
+
+      <div class="rail" id="mealRail" role="group" aria-label="وعده"></div>
+      <div class="filter-note" id="breadFilterNote" hidden>
+        <span id="breadFilterText"></span>
+        <button type="button" id="clearBread">برداشتن فیلتر</button>
+      </div>
+
+      <div class="section-head">
+        <h2 id="recipesHeading">همه‌ی دستورها</h2>
+        <span class="count" id="recipesCount"></span>
+      </div>
+      <div class="grid" id="recipeGrid"></div>
+      <div class="empty" id="recipeEmpty" hidden>
+        <strong>چیزی پیدا نشد</strong>
+        <p>شاید با یک واژه‌ی کوتاه‌تر یا وعده‌ی دیگری نتیجه بگیری.</p>
+      </div>
+    </section>
+
+    <section class="page" id="view-breads" hidden>
+      <div class="section-head">
+        <h2>نان‌های لوو</h2>
+        <span class="count" id="breadsCount"></span>
+      </div>
+      <p style="margin:0;color:var(--ink-2);font-size:.85rem">روی هر نان بزن تا دستورهایی که با همون نان درست می‌شن رو ببینی.</p>
+      <div class="bread-list" id="breadList"></div>
+    </section>
+
+    <section class="page" id="view-saved" hidden>
+      <div class="section-head">
+        <h2>نشان‌شده‌ها</h2>
+        <span class="count" id="savedCount"></span>
+      </div>
+      <div class="grid" id="savedGrid"></div>
+      <div class="empty" id="savedEmpty" hidden>
+        <strong>هنوز چیزی نشان نکردی</strong>
+        <p>روی قلبِ گوشه‌ی هر دستور بزن تا همین‌جا بماند.</p>
+      </div>
+    </section>
+
+    <section class="page" id="view-guide" hidden>
+      <div class="section-head"><h2>راهنمای نان</h2></div>
+
+      <div class="note">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          نگهداری، تا روز سوم هم تازه بماند
+        </h3>
+        <p>لوف خمیرترش را با <strong>برشِ رو به پایین</strong> روی تخته بگذارید؛ همان مقطع بریده‌شده بهترین دربندِ رطوبت است.</p>
+        <p>کیسه‌ی <strong>کاغذی یا پارچه‌ای</strong> بله، نایلون نه. نایلون پوسته را نرم و چرمی می‌کند.</p>
+        <p>یخچال بدترین جاست: در دمای ۴ تا ۶ درجه نشاسته سریع‌تر از دمای اتاق بازمتبلور می‌شود و نان در یک شب بیات می‌شود.</p>
+      </div>
+
+      <div class="note">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3c1.5 2.5.5 4-1 5.5S9 12 10.5 14"/><path d="M5 14c0 4 3.1 7 7 7s7-3 7-7c0-2.4-1.3-4-2.6-5.4"/></svg>
+          تازه‌کردن نانِ دیروز
+        </h3>
+        <ol class="steps-mini">
+          <li>پوسته را زیر شیر آب سرد، یک لحظه، کاملاً نم بزنید — نترسید، باید خیس شود.</li>
+          <li>مستقیم روی توریِ فرِ ۲۰۰ درجه‌ی از پیش‌گرم‌شده، ۸ تا ۱۰ دقیقه.</li>
+          <li>بیرون بیاورید و <strong>۱۰ دقیقه</strong> روی توری خنک شود؛ تُردیِ پوسته در همین ده دقیقه برمی‌گردد.</li>
+        </ol>
+      </div>
+
+      <div class="note">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v18M3 12h18M6 6l12 12M18 6 6 18"/></svg>
+          فریز، برای نانی که تنها می‌خوریم
+        </h3>
+        <p>همان روزِ اول <strong>برش بزنید</strong>، بین برش‌ها کاغذ روغنی بگذارید و در کیسه‌ی فریزر بخوابانید. تا سه ماه.</p>
+        <p>برشِ یخ‌زده مستقیم به توستر می‌رود؛ هیچ نیازی به یخ‌زدایی نیست.</p>
+      </div>
+
+      <div class="note">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          خمیر پیتزای نیمه‌آماده
+        </h3>
+        <p>۳۰ تا ۴۰ دقیقه پیش از پهن‌کردن، از یخچال بیرونش بیاورید. خمیرِ سرد کِش نمی‌آید و پاره می‌شود.</p>
+        <p>با <strong>سرِ انگشت</strong> از مرکز به بیرون باز کنید و یک نوارِ یک‌سانتی از لبه را دست‌نخورده بگذارید؛ همان لبه پف می‌کند.</p>
+        <p>فر را روی <strong>بالاترین دما</strong> (۲۵۰ تا ۲۸۰ درجه) با سینی یا سنگ داغ، دست‌کم ۲۰ دقیقه پیش‌گرم کنید.</p>
+      </div>
+
+      <div class="note">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 4h12v16H6z"/><path d="M6 9h12M6 14h12"/></svg>
+          پیمانه به گرم
+        </h3>
+        <dl class="kv">
+          <dt>۱ پیمانه آرد سفید</dt><dd>۱۲۰ گرم</dd>
+          <dt>۱ پیمانه شکر</dt><dd>۲۰۰ گرم</dd>
+          <dt>۱ پیمانه پنیر پیتزای رنده‌شده</dt><dd>۱۰۰ گرم</dd>
+          <dt>۱ قاشق غذاخوری کره</dt><dd>۱۴ گرم</dd>
+          <dt>۱ پیمانه مایعات</dt><dd>۲۴۰ میلی‌لیتر</dd>
+        </dl>
+      </div>
+
+      <div class="note">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18.5h2"/></svg>
+          نصب روی گوشی
+        </h3>
+        <p><strong>آیفون:</strong> در سافاری، دکمه‌ی اشتراک‌گذاری (مربع با فلش رو به بالا) ← «Add to Home Screen» ← افزودن.</p>
+        <p><strong>اندروید:</strong> در کروم، منوی سه‌نقطه ← «Install app» یا «Add to Home screen».</p>
+        <p>بعد از نصب، آیکن لوو کنار بقیه‌ی اپ‌ها می‌نشیند و دستورها بدون مرورگر باز می‌شوند.</p>
+      </div>
+
+      <div class="note" style="text-align:center">
+        <p style="margin-bottom:12px">نان‌ها را از خود لوو بگیرید.</p>
+        <a class="order-btn" id="orderLink" href="https://instagram.com/levobakery" target="_blank" rel="noopener">سفارش از لوو</a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabbar" aria-label="بخش‌های اپ">
+    <div class="tabbar-inner" id="tabbar" role="tablist">
+      <button class="tab" type="button" role="tab" data-view="recipes" aria-selected="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H19v3H6.5A2.5 2.5 0 0 1 4 20.5Z"/><path d="M9 7.5h6"/></svg>
+        دستورها
+      </button>
+      <button class="tab" type="button" role="tab" data-view="breads" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.2 13.4c0-3.6 3.5-6.4 7.8-6.4s7.8 2.8 7.8 6.4c0 2.2-1.6 3.6-3.6 3.6H7.8c-2 0-3.6-1.4-3.6-3.6Z"/><path d="M9.4 8.1 8 16.4M12 7.6l-.6 9.1M14.6 8.1l1.4 8.3"/></svg>
+        نان‌ها
+      </button>
+      <button class="tab" type="button" role="tab" data-view="saved" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.6 12 20 12 20Z"/></svg>
+        <span class="badge" id="savedBadge" hidden>۰</span>
+        نشان‌شده
+      </button>
+      <button class="tab" type="button" role="tab" data-view="guide" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4.5"/><circle cx="12" cy="8" r=".6" fill="currentColor"/></svg>
+        راهنما
+      </button>
+    </div>
+  </nav>
+
+  <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-label="دستور پخت"></div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var ORDER_URL = "https://instagram.com/levobakery";
+
+  /* ---------------- data ---------------- */
+
+  var BREADS = [
+    { id: "b1",  name: "نان لوف خمیر ترش",            short: "لوف خمیرترش",      price: 175000, unit: "یک عدد", tone: "honey", art: "loaf",
+      desc: "چانه‌ی ۷۵۰ گرمی آرد کامل، تخمیر طولانی. پوسته‌ی محکم، مغز کشسان و کمی ترش." },
+    { id: "b2",  name: "نان لوف خمیر ترش روگن",        short: "لوف چاودار",       price: 195000, unit: "یک عدد", tone: "cocoa", art: "loaf",
+      desc: "چاودار و آرد نانی، ۷۵۰ تا ۸۰۰ گرم. تیره‌تر، معطرتر و سنگین‌تر از لوف ساده." },
+    { id: "b3",  name: "نان لوف خمیر ترش مویز و گردو", short: "لوف مویز و گردو",  price: 205000, unit: "یک عدد", tone: "rose",  art: "loaf",
+      desc: "مویز و گردو در آرد کامل، ۶۰۰ تا ۷۰۰ گرم، تخمیر ۳۶ ساعته. شیرینیِ ملایمِ طبیعی." },
+    { id: "b4",  name: "لوف خمیرترش شکلاتی",           short: "لوف شکلاتی",       price: 280000, unit: "یک عدد", tone: "cocoa", art: "loaf",
+      desc: "۷۰۰ گرم، با عصاره‌ی مالت جو، پودر کاکائو و تراشه‌ی شکلات تلخ." },
+    { id: "b5",  name: "لوف خمیرترش جو و چند دانه",    short: "لوف چنددانه",      price: 260000, unit: "یک عدد", tone: "olive", art: "loaf",
+      desc: "آرد جو با تخم کتان، آفتابگردان، کدو و کنجد. پُردانه و سیرکننده." },
+    { id: "b6",  name: "نان باگت فرانسوی",             short: "باگت",             price: 85000,  unit: "یک عدد", tone: "honey", art: "baguette",
+      desc: "۳۵۰ گرم، خمیرترش طبیعی. پوسته‌ی ترد، مغز باز و سبک." },
+    { id: "b7",  name: "فوکاچیا مدیترانه‌ای",          short: "فوکاچیا مدیترانه‌ای", price: 75000, unit: "۱۰۰ گرم", tone: "olive", art: "focaccia",
+      desc: "روغن زیتون، زیتون سیاه، پیاز، فلفل دلمه و گوجه‌ی گیلاسی." },
+    { id: "b8",  name: "فوکاچیا با پنیر",              short: "فوکاچیا پنیری",    price: 50000,  unit: "۱۰۰ گرم", tone: "honey", art: "focaccia",
+      desc: "نان ایتالیایی سبک با روغن زیتون بکر، پنیر، کنجد و سیاه‌دانه." },
+    { id: "b9",  name: "خمیر پیتزا نیمه‌آماده",        short: "خمیر پیتزا",       price: 90000,  unit: "چانه‌ی ۲۵۰ گرمی", tone: "ember", art: "dough",
+      desc: "چانه‌ی ۲۵۰ گرمی پهن‌نشده با خمیرترش، آرد گندم، آب، نمک و روغن زیتون." },
+    { id: "b10", name: "نان تست صبحانه",               short: "تست صبحانه",       price: 130000, unit: "یک بسته", tone: "honey", art: "toastloaf",
+      desc: "با آرد گندم، خمیرترش، تخم‌مرغ و شیر. نرم، مقوی و خوش‌عطر." },
+    { id: "b11", name: "تست چندغله",                   short: "تست چندغله",       price: 175000, unit: "یک بسته", tone: "olive", art: "toastloaf",
+      desc: "خمیرترش با جو دوسر، جوی دوسر، چاودار و گندم کامل." }
+  ];
+
+  var MEALS = ["صبحانه", "ناهار", "شام", "سوپ و سالاد", "میان‌وعده", "مهمانی", "شیرین"];
+
+  var MEAL_TONE = {
+    "صبحانه": "honey", "ناهار": "olive", "شام": "ember",
+    "سوپ و سالاد": "olive", "میان‌وعده": "cocoa", "مهمانی": "rose", "شیرین": "cocoa"
+  };
+
+  var RECIPES = [
+    { id: "r01", bread: "b1", meals: ["صبحانه"], art: "toast", time: 15, serves: 2, level: "آسان",
+      title: "تست آووکادو و تخم‌مرغ نیم‌بند",
+      sub: "کلاسیکِ صبحانه، با مغزِ کشسانِ لوف زیرش",
+      ing: [["نان لوف خمیرترش", "۲ برش ضخیم"], ["آووکادوی رسیده", "۱ عدد"], ["تخم‌مرغ", "۲ عدد"], ["آب‌لیمو تازه", "۱ ق‌چ"], ["روغن زیتون بکر", "۱ ق‌غ"], ["نمک دریا و فلفل سیاه تازه‌ساییده", "به‌دلخواه"], ["پولک فلفل یا کنجد برشته", "برای تزیین"]],
+      steps: [
+        "آب را در قابلمه‌ی کوچک به جوشِ آرام برسانید. تخم‌مرغ سرد را با قاشق داخل آب بگذارید و دقیقاً ۶ دقیقه و ۳۰ ثانیه بجوشانید، بعد فوری در کاسه‌ی آب‌ یخ بیندازید.",
+        "برش‌های نان را در تابه‌ی داغ و بدون روغن، هر طرف ۹۰ ثانیه برشته کنید تا لبه‌ها طلایی و مرکز گرم شود.",
+        "آووکادو را در کاسه با آب‌لیمو، نمک و فلفل با پشت چنگال له کنید؛ کمی درشت بماند، خمیر نشود.",
+        "آووکادو را روی نان پهن کنید، تخم‌مرغ پوست‌گرفته را از وسط نصف کنید و رو بگذارید.",
+        "روغن زیتون، یک چرخ فلفل و پولک فلفل بپاشید و بلافاصله سرو کنید."
+      ],
+      tip: "نان خمیرترش را هرگز سرد و بدون برشته‌کردن سرو نکنید؛ حرارت، عطرِ اسیدهای تخمیر را دوباره آزاد می‌کند." },
+
+    { id: "r02", bread: "b1", meals: ["سوپ و سالاد", "ناهار"], art: "salad", time: 25, serves: 4, level: "آسان",
+      title: "پانزانلا؛ سالاد نان توسکانی",
+      sub: "دستورِ ایتالیایی‌ها برای نانی که دیروز پخته شده",
+      ing: [["نان لوف خمیرترش کمی بیات", "نصف قرص"], ["گوجه‌ی رسیده", "۴ عدد بزرگ"], ["خیار", "۱ عدد"], ["پیاز قرمز", "نصف عدد"], ["برگ ریحان تازه", "یک مشت"], ["روغن زیتون بکر", "۵ ق‌غ"], ["سرکه‌ی قرمز", "۲ ق‌غ"], ["نمک و فلفل", "به‌دلخواه"]],
+      steps: [
+        "نان را با دست به تکه‌های درشت ببُرید و در سینی، فرِ ۱۸۰ درجه، ۱۰ دقیقه بگذارید تا لبه‌ها سفت اما مرکز نرم بماند.",
+        "گوجه‌ها را قاچ درشت بزنید، نمک بپاشید و ۱۰ دقیقه در آبکش روی کاسه بگذارید تا آبشان جمع شود — این آب، سسِ اصلی سالاد است.",
+        "پیاز قرمز را نازک حلقه کنید و ۵ دقیقه در آب سرد بخوابانید تا تندی‌اش برود.",
+        "آب گوجه را با سرکه، روغن زیتون و فلفل هم بزنید. نان‌ها را با آن مخلوط کنید و ۱۰ دقیقه بگذارید بخورد.",
+        "گوجه، خیار قاچ‌شده، پیاز و ریحانِ دست‌دَریده را اضافه کنید، یک بار هم بزنید و سرو کنید."
+      ],
+      tip: "پانزانلا را سرد نکنید. در دمای اتاق و بیست دقیقه پس از ساخت، بهترین حالتش را دارد." },
+
+    { id: "r03", bread: "b1", meals: ["سوپ و سالاد", "شام"], art: "bowl", time: 45, serves: 4, level: "متوسط",
+      title: "سوپ گوجه‌ی کبابی با نان پنیری",
+      sub: "سوپِ غلیظ، با یک مثلثِ تستِ پنیر که در آن فرو می‌رود",
+      ing: [["گوجه‌ی رسیده", "۸ عدد"], ["سیر", "۵ حبه"], ["پیاز", "۱ عدد"], ["روغن زیتون", "۳ ق‌غ"], ["آبِ مرغ یا سبزیجات", "۳ پیمانه"], ["ریحان خشک", "۱ ق‌چ"], ["خامه‌ی صبحانه", "۳ ق‌غ"], ["نان لوف خمیرترش", "۴ برش"], ["پنیر پیتزا یا چدار", "۱ پیمانه"]],
+      steps: [
+        "گوجه‌ها را نصف کنید، با پیازِ قاچ‌شده و حبه‌های سیرِ پوست‌نکنده در سینی بچینید، روغن زیتون و نمک بپاشید.",
+        "در فرِ ۲۰۰ درجه، ۳۰ دقیقه کباب کنید تا لبه‌ها سیاه‌سوخته شود — همین کبابی‌شدن، شیرینیِ سوپ را می‌سازد.",
+        "سیرها را از پوست بیرون بیاورید، همه را با آبِ مرغ در قابلمه بریزید و ۱۰ دقیقه بجوشانید، بعد با گوشتکوب برقی صاف کنید.",
+        "ریحان، نمک، فلفل و خامه را اضافه کنید و روی شعله‌ی ملایم گرم نگه دارید؛ دیگر نجوشد.",
+        "برش‌های نان را با پنیر بپوشانید و زیر گریل فر بگذارید تا پنیر قلقل کند. سوپ را در کاسه بریزید و نان را کنارش بگذارید."
+      ],
+      tip: "اگر سوپ زیادی ترش شد، یک نوکِ قاشق شکر — نه بیشتر — تعادل را برمی‌گرداند." },
+
+    { id: "r04", bread: "b1", meals: ["شام"], art: "tartine", time: 25, serves: 2, level: "آسان",
+      title: "تارتین قارچ و آویشن",
+      sub: "شامِ سبکِ بیست‌دقیقه‌ای روی یک برشِ بزرگ",
+      ing: [["نان لوف خمیرترش", "۲ برش بزرگ"], ["قارچ دکمه‌ای یا صدفی", "۳۰۰ گرم"], ["کره", "۲ ق‌غ"], ["سیر", "۲ حبه"], ["آویشن تازه", "چند شاخه"], ["خامه‌ی ترش یا ماست چکیده", "۳ ق‌غ"], ["پنیر پارمزان رنده‌شده", "۲ ق‌غ"], ["نمک و فلفل", "به‌دلخواه"]],
+      steps: [
+        "قارچ‌ها را نشویید؛ با دستمال مرطوب تمیز کنید و ضخیم ورقه بزنید.",
+        "تابه را خوب داغ کنید، کره را بیندازید و قارچ‌ها را یک لایه بریزید. تا دو دقیقه دست نزنید تا قهوه‌ای شوند.",
+        "سیر خردشده، آویشن، نمک و فلفل را اضافه کنید و یک دقیقه‌ی دیگر تفت دهید.",
+        "نان را برشته کنید، خامه‌ی ترش را رویش بمالید و قارچ داغ را بریزید.",
+        "پارمزان و چند برگ آویشن روی کار بپاشید."
+      ],
+      tip: "نمک را آخر بزنید. نمکِ زودهنگام آب قارچ را بیرون می‌کشد و به‌جای سرخ‌شدن، بخارپز می‌شود." },
+
+    { id: "r05", bread: "b1", meals: ["مهمانی", "میان‌وعده"], art: "board", time: 15, serves: 6, level: "آسان",
+      title: "بروسکتای گوجه و ریحان",
+      sub: "پیش‌غذایی که در ده دقیقه سرِ میز است",
+      ing: [["نان لوف خمیرترش", "۱۲ برش نازک"], ["گوجه‌ی گیلاسی", "۳۰۰ گرم"], ["سیر", "۱ حبه‌ی درسته"], ["ریحان تازه", "۱۵ برگ"], ["روغن زیتون بکر", "۴ ق‌غ"], ["سرکه‌ی بالزامیک", "۱ ق‌چ"], ["نمک دریا", "به‌دلخواه"]],
+      steps: [
+        "گوجه‌ها را چهارقاچ کنید، با نمک، روغن زیتون و بالزامیک مخلوط کنید و کنار بگذارید.",
+        "برش‌های نان را روی گریل یا در تابه‌ی برشته‌کن داغ کنید تا خط‌های سوخته بیفتد.",
+        "تا نان داغ است، حبه‌ی سیرِ نصف‌شده را روی سطحش بکشید؛ پوسته‌ی زبرِ خمیرترش سیر را مثل رنده می‌تراشد.",
+        "گوجه‌ها را با قاشقِ سوراخ‌دار روی نان بگذارید تا آب اضافه پایین بماند.",
+        "ریحانِ دست‌دَریده را رو بگذارید و بلافاصله سرو کنید."
+      ],
+      tip: "بروسکتا را از پیش نچینید؛ بعد از پنج دقیقه نان آبِ گوجه را می‌گیرد و وا می‌رود." },
+
+    { id: "r06", bread: "b1", meals: ["صبحانه", "مهمانی"], art: "casserole", time: 70, serves: 6, level: "متوسط",
+      title: "استراتای صبحانه‌ی مهمانی",
+      sub: "یک سینی نانِ خیسانده که شب می‌چینی و صبح می‌پزی",
+      ing: [["نان لوف خمیرترش بیات", "۶ پیمانه مکعبی"], ["تخم‌مرغ", "۶ عدد"], ["شیر", "۲ پیمانه"], ["پنیر چدار یا گودا", "۱.۵ پیمانه"], ["اسفناج تازه", "۲ مشت"], ["پیازچه", "۴ شاخه"], ["کره برای چرب‌کردن", "۱ ق‌غ"], ["نمک، فلفل و جوز هندی", "به‌دلخواه"]],
+      steps: [
+        "ظرف پیرکس را کره‌مالی کنید و مکعب‌های نان را در آن بریزید.",
+        "اسفناج را در تابه پژمرده کنید، آبش را بگیرید و با پیازچه‌ی خردشده روی نان پخش کنید.",
+        "تخم‌مرغ، شیر، نمک، فلفل و یک خراش جوز هندی را هم بزنید و روی نان بریزید. پنیر را رو بپاشید.",
+        "ظرف را بپوشانید و دست‌کم ۴ ساعت — بهتر است تمام شب — در یخچال بگذارید.",
+        "نیم‌ساعت پیش از پخت بیرون بیاورید، سپس در فرِ ۱۷۵ درجه، ۴۵ تا ۵۰ دقیقه بپزید تا وسطش سفت و رویش طلایی شود.",
+        "۱۰ دقیقه استراحت بدهد، بعد ببُرید."
+      ],
+      tip: "نانِ تازه اینجا وا می‌رود. هرچه نان خشک‌تر باشد، بافتِ نهایی محکم‌تر و برش‌پذیرتر است." },
+
+    { id: "r07", bread: "b1", meals: ["سوپ و سالاد"], art: "bowl", time: 20, serves: 4, level: "آسان",
+      title: "کروتونِ خمیرترش",
+      sub: "دو پیمانه کروتون که یک هفته می‌ماند",
+      ing: [["نان لوف خمیرترش", "۴ برش ضخیم"], ["روغن زیتون", "۳ ق‌غ"], ["پودر سیر", "۱ ق‌چ"], ["پاپریکا", "نصف ق‌چ"], ["آویشن خشک", "۱ ق‌چ"], ["نمک", "نصف ق‌چ"]],
+      steps: [
+        "نان را به مکعب‌های دوسانتی ببُرید؛ اندازه‌ها یکسان باشد تا همزمان برشته شوند.",
+        "در کاسه، روغن و ادویه‌ها را با مکعب‌ها مخلوط کنید تا همه چرب شوند.",
+        "در یک لایه روی سینی بچینید — روی هم نریزید، بخار می‌کنند.",
+        "فرِ ۱۷۵ درجه، ۱۵ تا ۱۸ دقیقه؛ وسط کار یک بار سینی را تکان بدهید.",
+        "کاملاً خنک شود، بعد در شیشه‌ی دربسته بریزید."
+      ],
+      tip: "کروتونِ گرم نرم به‌نظر می‌رسد؛ قضاوت را بگذارید برای وقتی که سرد شد." },
+
+    { id: "r08", bread: "b2", meals: ["ناهار"], art: "opensandwich", time: 15, serves: 2, level: "آسان",
+      title: "اسمورربرودِ چاودار با ماهی دودی",
+      sub: "ساندویچِ بازِ دانمارکی، روی نان چاودارِ لوو",
+      ing: [["نان لوف چاودار", "۴ برش نازک"], ["ماهی دودی (سالمون یا قزل‌آلا)", "۱۵۰ گرم"], ["پنیر خامه‌ای", "۴ ق‌غ"], ["خیارشور ریز", "۲ عدد"], ["شوید تازه", "چند شاخه"], ["پیاز قرمز", "چند حلقه‌ی نازک"], ["آب‌لیمو", "چند قطره"], ["فلفل سیاه", "به‌دلخواه"]],
+      steps: [
+        "برش‌های چاودار را نازک ببُرید — این نان سنگین است و برشِ ضخیم، ساندویچ را خسته‌کننده می‌کند.",
+        "روی هر برش یک لایه‌ی سخاوتمند پنیر خامه‌ای بمالید تا لبه‌ها.",
+        "ماهی دودی را تا بزنید و رویش بگذارید، بعد حلقه‌های پیاز و ورقه‌های خیارشور.",
+        "شوید، چند قطره آب‌لیمو و فلفلِ تازه‌ساییده. با چاقو و چنگال بخورید."
+      ],
+      tip: "نان چاودار را برشته نکنید؛ عطرِ ترشِ چاودار در حالت خام بهتر با ماهی دودی جفت می‌شود." },
+
+    { id: "r09", bread: "b2", meals: ["میان‌وعده", "ناهار"], art: "opensandwich", time: 10, serves: 2, level: "آسان",
+      title: "چاودار با پنیر و خیارشور",
+      sub: "سه‌چیزِ ساده که با هم بیشتر از جمعشان‌اند",
+      ing: [["نان لوف چاودار", "۴ برش"], ["کره‌ی نمکی در دمای اتاق", "۲ ق‌غ"], ["پنیر گودا یا امنتال", "۸ ورقه"], ["خیارشور", "۴ عدد"], ["خردل دانه‌ای", "۲ ق‌چ"], ["تربچه", "۴ عدد"]],
+      steps: [
+        "کره را روی نان بمالید؛ باید نرم باشد تا نان را پاره نکند.",
+        "خردل دانه‌ای را نازک روی کره بکشید.",
+        "پنیر، بعد ورقه‌های طولیِ خیارشور و ورقه‌های نازک تربچه.",
+        "یک چرخ فلفل و تمام."
+      ],
+      tip: "کره را نیم‌ساعت پیش از کار از یخچال بیرون بگذارید. کره‌ی سرد بزرگ‌ترین دشمنِ ساندویچ باز است." },
+
+    { id: "r10", bread: "b3", meals: ["مهمانی"], art: "board", time: 15, serves: 4, level: "آسان",
+      title: "تخته‌ی پنیر با نان مویز و گردو",
+      sub: "میزِ عصرانه‌ای که فقط چیدن می‌خواهد",
+      ing: [["نان مویز و گردو", "نصف قرص، برش‌خورده"], ["پنیر بری یا کممبر", "۱۵۰ گرم"], ["پنیر بز یا فتای خامه‌ای", "۱۰۰ گرم"], ["عسل", "۳ ق‌غ"], ["گردوی تازه", "یک مشت"], ["انگور یا انجیر", "۱ خوشه"], ["رزماری تازه", "۲ شاخه"]],
+      steps: [
+        "پنیرها را نیم‌ساعت پیش از سرو از یخچال بیرون بیاورید؛ پنیرِ سرد بی‌طعم است.",
+        "برش‌های نان را کوتاه در تابه یا فر گرم کنید تا مویزها کمی برق بیفتند.",
+        "تخته را از یک گوشه بچینید: پنیرِ نرم، بعد میوه، بعد مغزها، و نان در لبه‌ی بیرونی.",
+        "عسل را در کاسه‌ی کوچک با قاشق کنار بگذارید و رزماری را لابه‌لای کار بخوابانید."
+      ],
+      tip: "برای هر نفر حدود ۸۰ گرم پنیر و سه برش نان حساب کنید؛ بیشترِ تخته‌ها خالی می‌مانند چون نانشان کم است." },
+
+    { id: "r11", bread: "b3", meals: ["صبحانه", "میان‌وعده"], art: "toast", time: 8, serves: 2, level: "آسان",
+      title: "تست پنیر خامه‌ای، عسل و گردو",
+      sub: "هشت دقیقه، برای صبحی که دیر شده",
+      ing: [["نان مویز و گردو", "۲ برش"], ["پنیر خامه‌ای", "۳ ق‌غ"], ["عسل", "۲ ق‌چ"], ["گردوی خردشده", "۲ ق‌غ"], ["دارچین", "یک نوکِ قاشق"], ["نمک دریا", "یک ذره"]],
+      steps: [
+        "برش‌ها را در توستر برشته کنید تا گرم و کمی ترد شوند.",
+        "پنیر خامه‌ای را روی نانِ داغ بمالید تا کمی آب شود.",
+        "گردو بپاشید، عسل را بچرخانید و دارچین و یک ذره نمک دریا رویش بزنید."
+      ],
+      tip: "آن یک ذره نمکِ دریا اختیاری به‌نظر می‌رسد، اما شیرینیِ عسل را دو برابر واضح می‌کند." },
+
+    { id: "r12", bread: "b4", meals: ["شیرین", "مهمانی"], art: "sweet", time: 60, serves: 6, level: "متوسط",
+      title: "پودینگ نان شکلاتی",
+      sub: "دسرِ گرمِ قاشقی از لوفِ شکلاتی لوو",
+      ing: [["لوف خمیرترش شکلاتی", "نصف قرص، مکعبی"], ["شیر", "۲ پیمانه"], ["خامه‌ی صبحانه", "نصف پیمانه"], ["تخم‌مرغ", "۳ عدد"], ["شکر", "نصف پیمانه"], ["شکلات تلخ", "۱۰۰ گرم"], ["وانیل", "۱ ق‌چ"], ["کره برای ظرف", "۱ ق‌غ"]],
+      steps: [
+        "شیر و خامه را گرم کنید (نجوشد)، شکلات خردشده را در آن بریزید و هم بزنید تا یکدست شود.",
+        "تخم‌مرغ‌ها را با شکر و وانیل بزنید، سپس مخلوط شکلاتِ ولرم را کم‌کم و هم‌زنان به آن اضافه کنید.",
+        "مکعب‌های نان را در ظرفِ کره‌مالی‌شده بریزید و مایه را رویشان بریزید. ۲۰ دقیقه بگذارید بخورد و گاهی فشار دهید.",
+        "ظرف را در سینیِ بزرگ‌ترِ حاوی آب جوش بگذارید (بن‌ماری) و در فرِ ۱۶۰ درجه، ۴۰ تا ۴۵ دقیقه بپزید.",
+        "وسطش باید کمی بلرزد. ۱۵ دقیقه استراحت بدهید و ولرم سرو کنید."
+      ],
+      tip: "بن‌ماری اختیاری نیست؛ بدون آن لبه‌ها پیش از پختِ مرکز، لاستیکی می‌شوند." },
+
+    { id: "r13", bread: "b4", meals: ["میان‌وعده", "شیرین"], art: "toast", time: 7, serves: 1, level: "آسان",
+      title: "تست شکلاتی با موز و کره‌ی بادام‌زمینی",
+      sub: "میان‌وعده‌ی بعدازظهر، بدون هیچ بهانه‌ای",
+      ing: [["لوف خمیرترش شکلاتی", "۱ برش ضخیم"], ["کره‌ی بادام‌زمینی", "۲ ق‌غ"], ["موز", "۱ عدد"], ["نمک دریا", "یک ذره"], ["دانه‌ی چیا یا کنجد", "۱ ق‌چ"]],
+      steps: [
+        "برش نان را برشته کنید تا تراشه‌های شکلاتش نرم شود.",
+        "کره‌ی بادام‌زمینی را روی نانِ داغ بمالید.",
+        "موز را اریب و نازک ورقه کنید و روی کار بچینید.",
+        "نمک دریا و دانه بپاشید."
+      ],
+      tip: "برش را اریب ببُرید؛ سطح بیشتری برای کره‌ی بادام‌زمینی می‌ماند." },
+
+    { id: "r14", bread: "b5", meals: ["ناهار", "میان‌وعده"], art: "opensandwich", time: 12, serves: 2, level: "آسان",
+      title: "تستِ چنددانه با تن ماهی و آووکادو",
+      sub: "ناهارِ سرپاییِ پُرپروتئین",
+      ing: [["لوف جو و چنددانه", "۴ برش"], ["تن ماهی در روغن", "۱ قوطی"], ["آووکادو", "۱ عدد"], ["پیازچه", "۳ شاخه"], ["آب‌لیمو", "۱ ق‌غ"], ["ماست چکیده", "۲ ق‌غ"], ["فلفل سیاه و پولک فلفل", "به‌دلخواه"]],
+      steps: [
+        "روغن تن ماهی را کاملاً بگیرید و با چنگال از هم باز کنید.",
+        "تن را با ماست چکیده، آب‌لیمو، پیازچه‌ی خردشده و فلفل مخلوط کنید.",
+        "برش‌های نان را برشته کنید و ورقه‌های آووکادو را رویشان بچینید.",
+        "مخلوط تن را رو بگذارید و پولک فلفل بپاشید."
+      ],
+      tip: "ماست چکیده به‌جای سسِ مایونز، هم سبک‌تر است و هم دانه‌های نان را زیر خودش پنهان نمی‌کند." },
+
+    { id: "r15", bread: "b5", meals: ["سوپ و سالاد", "شام"], art: "bowl", time: 45, serves: 4, level: "آسان",
+      title: "سوپ عدس دودی با نان چنددانه",
+      sub: "شامِ سردِ زمستان، با نانی که در آن فرو می‌رود",
+      ing: [["عدس قهوه‌ای", "۱.۵ پیمانه"], ["پیاز", "۱ عدد"], ["هویج", "۲ عدد"], ["سیر", "۳ حبه"], ["رب گوجه", "۲ ق‌غ"], ["پاپریکای دودی", "۱.۵ ق‌چ"], ["زیره", "۱ ق‌چ"], ["آبِ سبزیجات", "۵ پیمانه"], ["لوف جو و چنددانه", "برای سرو"]],
+      steps: [
+        "پیاز و هویجِ نگینی را در قابلمه با روغن زیتون ۷ دقیقه تفت دهید تا نرم شوند.",
+        "سیر، زیره و پاپریکای دودی را اضافه کنید و ۳۰ ثانیه هم بزنید تا عطرشان بلند شود.",
+        "رب را اضافه کنید و یک دقیقه سرخ کنید — رب باید رنگ ببازد تا خامیِ مزه‌اش برود.",
+        "عدسِ شسته و آب را بریزید، به جوش بیاورید و با درِ نیمه‌باز ۳۰ دقیقه بجوشانید.",
+        "یک پیمانه از سوپ را با گوشتکوب برقی صاف کنید و به قابلمه برگردانید؛ این کار سوپ را بدون خامه غلیظ می‌کند.",
+        "با نانِ برشته‌ی چنددانه و یک چرخ روغن زیتون سرو کنید."
+      ],
+      tip: "نمک را بعد از پختِ کاملِ عدس بزنید؛ نمکِ زودهنگام پوستِ عدس را سفت نگه می‌دارد." },
+
+    { id: "r16", bread: "b6", meals: ["ناهار"], art: "sandwich", time: 10, serves: 2, level: "آسان",
+      title: "ژامبون-بور؛ ساندویچ فرانسوی",
+      sub: "چهار ماده، و باگتی که تازه از فر آمده",
+      ing: [["باگت فرانسوی", "۱ عدد"], ["کره‌ی نمکیِ خوب", "۴۰ گرم"], ["ژامبون ورقه‌ای", "۶ ورقه"], ["خیارشور کورنیشون", "۶ عدد"], ["فلفل سیاه", "به‌دلخواه"]],
+      steps: [
+        "باگت را از وسط، اما نه تا انتها، ببُرید تا مثل کتاب باز شود.",
+        "کره‌ی نرم را سخاوتمندانه روی هر دو طرف بمالید — در این ساندویچ کره همان سُس است.",
+        "ژامبون را تا بزنید و لای نان بچینید؛ تا زدن، بافت بهتری از پهن‌کردن می‌دهد.",
+        "کورنیشون‌ها را طولی نصف کنید و رو بگذارید. یک چرخ فلفل و ببندید.",
+        "ساندویچ را از وسط ببُرید و همان‌ موقع بخورید."
+      ],
+      tip: "این ساندویچ عمرِ کوتاهی دارد. باگتِ لوو دو ساعت بعد از پخت، بهترین نسخه‌ی خودش است." },
+
+    { id: "r17", bread: "b6", meals: ["مهمانی", "میان‌وعده"], art: "baguette", time: 20, serves: 4, level: "آسان",
+      title: "باگت سیر و کره‌ی جعفری",
+      sub: "همراهِ ثابتِ هر ماکارونی و سوپی",
+      ing: [["باگت فرانسوی", "۱ عدد"], ["کره در دمای اتاق", "۸۰ گرم"], ["سیر", "۴ حبه"], ["جعفری تازه", "یک مشت"], ["پنیر پارمزان", "۳ ق‌غ"], ["نمک و فلفل", "به‌دلخواه"]],
+      steps: [
+        "کره، سیرِ رنده‌شده، جعفریِ ریزخردشده، نمک و فلفل را در کاسه یکدست کنید.",
+        "باگت را اریب و تا نزدیک کف ببُرید، طوری که برش‌ها به هم وصل بمانند.",
+        "با قاشق، کره را لای هر شکاف بمالید و کمی هم روی سطح.",
+        "پارمزان بپاشید، باگت را در فویل بپیچید و در فرِ ۱۹۰ درجه، ۱۲ دقیقه بگذارید.",
+        "فویل را باز کنید و ۵ دقیقه‌ی آخر بدون پوشش بپزید تا رویش برشته شود."
+      ],
+      tip: "سیر را رنده کنید، خرد نکنید. تکه‌های درشتِ سیر در فر تلخ می‌شوند." },
+
+    { id: "r18", bread: "b6", meals: ["ناهار"], art: "sandwich", time: 35, serves: 2, level: "متوسط",
+      title: "بان‌میِ مرغ",
+      sub: "باگت فرانسوی، این‌بار از مسیر ویتنام",
+      ing: [["باگت فرانسوی", "۱ عدد"], ["سینه‌ی مرغ", "۳۰۰ گرم"], ["سس سویا", "۲ ق‌غ"], ["عسل", "۱ ق‌غ"], ["هویج و تربچه‌ی رنده‌شده", "۱ پیمانه"], ["سرکه‌ی سفید و شکر", "۳ ق‌غ و ۱ ق‌غ"], ["گشنیز تازه", "یک مشت"], ["خیار", "۱ عدد"], ["مایونز و سس سریراچا", "۳ ق‌غ و ۱ ق‌چ"]],
+      steps: [
+        "هویج و تربچه را با سرکه، شکر و کمی نمک مخلوط کنید و دست‌کم ۲۰ دقیقه بگذارید ترشی‌اش جا بیفتد.",
+        "مرغ را نواری ببُرید و با سس سویا، عسل، سیر و فلفل ۱۵ دقیقه بخوابانید.",
+        "مرغ را در تابه‌ی داغ تفت دهید تا لبه‌ها کاراملی شود.",
+        "باگت را باز کنید و کوتاه در فر گرم کنید. مایونزِ مخلوط‌شده با سریراچا را داخلش بمالید.",
+        "مرغ، ترشیِ آبکش‌شده، خیارِ نواری و گشنیزِ فراوان را لای نان بچینید."
+      ],
+      tip: "ترشیِ هویج را حتماً آبکش کنید؛ آبِ اضافه در دو دقیقه مغزِ باگت را خیس می‌کند." },
+
+    { id: "r19", bread: "b7", meals: ["ناهار"], art: "sandwich", time: 10, serves: 2, level: "آسان",
+      title: "ساندویچ فوکاچیا کاپرزه",
+      sub: "موتزارلا، گوجه، ریحان — و نانی که خودش روغن زیتون دارد",
+      ing: [["فوکاچیا مدیترانه‌ای", "۲۰۰ گرم"], ["پنیر موتزارلای تازه", "۱۲۵ گرم"], ["گوجه‌ی رسیده", "۲ عدد"], ["برگ ریحان", "۱۲ برگ"], ["سرکه‌ی بالزامیک غلیظ", "۱ ق‌غ"], ["روغن زیتون", "۱ ق‌غ"], ["نمک و فلفل", "به‌دلخواه"]],
+      steps: [
+        "فوکاچیا را به دو مربع ببُرید و هر مربع را افقی نصف کنید.",
+        "نان را چند ثانیه در تابه‌ی داغ، سمتِ بریده‌شده رو به پایین، بگذارید.",
+        "موتزارلا و گوجه را هم‌اندازه ورقه کنید و روی نان، یکی‌درمیان بچینید.",
+        "نمک، فلفل، روغن زیتون و بالزامیک بزنید، ریحان را بگذارید و در نان را ببندید.",
+        "ساندویچ را با کاغذ بپیچید و ۵ دقیقه زیر یک بشقاب سنگین بگذارید تا لایه‌ها به هم بچسبند."
+      ],
+      tip: "موتزارلا را روی دستمال بگذارید تا آبش برود؛ وگرنه نان از پایین خیس می‌شود." },
+
+    { id: "r20", bread: "b8", meals: ["صبحانه"], art: "egg", time: 15, serves: 2, level: "آسان",
+      title: "فوکاچیای پنیری با تخم‌مرغ",
+      sub: "صبحانه‌ای که در یک تابه تمام می‌شود",
+      ing: [["فوکاچیا با پنیر", "۲۰۰ گرم"], ["تخم‌مرغ", "۳ عدد"], ["گوجه‌ی گیلاسی", "۱۰ عدد"], ["پیازچه", "۳ شاخه"], ["روغن زیتون", "۱ ق‌غ"], ["پنیر فتا", "۵۰ گرم"], ["آویشن و فلفل", "به‌دلخواه"]],
+      steps: [
+        "گوجه‌های گیلاسی را در تابه با روغن زیتون تفت دهید تا پوستشان بترکد.",
+        "تخم‌مرغ‌ها را با نمک و فلفل هم بزنید و روی گوجه‌ها بریزید. شعله را ملایم کنید.",
+        "با کفگیر آرام از لبه‌ها به مرکز جمع کنید تا نیمه‌بسته شود؛ خشکش نکنید.",
+        "فوکاچیا را نصف کنید و در تابه‌ی دیگری یا توستر گرم کنید.",
+        "تخم‌مرغ را روی نان بریزید، فتای خردشده، پیازچه و آویشن بپاشید."
+      ],
+      tip: "تخم‌مرغ را سی ثانیه زودتر از آنچه فکر می‌کنید از شعله بردارید؛ حرارتِ باقی‌مانده کارش را تمام می‌کند." },
+
+    { id: "r21", bread: "b9", meals: ["شام"], art: "pizza", time: 30, serves: 2, level: "متوسط",
+      title: "پیتزا مارگاریتای خانگی",
+      sub: "سه ماده‌ی اصلی، و یک فرِ خیلی داغ",
+      ing: [["خمیر پیتزا نیمه‌آماده", "۲ چانه"], ["گوجه‌ی کنسروی له‌شده", "۱ پیمانه"], ["موتزارلای تازه", "۲۵۰ گرم"], ["ریحان تازه", "۱۵ برگ"], ["روغن زیتون بکر", "۲ ق‌غ"], ["نمک", "نصف ق‌چ"], ["سیر", "۱ حبه"]],
+      steps: [
+        "چانه‌ها را ۴۰ دقیقه پیش از کار از یخچال بیرون بگذارید. فر را با سینی یا سنگ داخلش، روی ۲۷۰ درجه، ۲۵ دقیقه پیش‌گرم کنید.",
+        "گوجه‌ی له‌شده را با نمک، سیرِ رنده‌شده و یک قاشق روغن زیتون مخلوط کنید. سس نپزید — خامی‌اش درست است.",
+        "چانه را روی سطح آردپاشی‌شده، با سرِ انگشت از مرکز به بیرون باز کنید و یک سانتی‌متر از لبه را دست نزنید.",
+        "سسِ کمی بزنید (بیشترِ پیتزاهای خانگی سسشان زیاد است)، موتزارلای آب‌گرفته را تکه‌تکه بگذارید.",
+        "روی سینیِ داغ بگذارید و ۷ تا ۹ دقیقه بپزید تا لبه‌ها لک‌های سوخته بردارند.",
+        "بیرون که آمد، ریحان تازه و روغن زیتون بزنید."
+      ],
+      tip: "ریحان را پیش از پخت نگذارید؛ در فرِ ۲۷۰ درجه سیاه و تلخ می‌شود." },
+
+    { id: "r22", bread: "b9", meals: ["شام"], art: "pizza", time: 35, serves: 2, level: "متوسط",
+      title: "پیتزا سفید با قارچ و آویشن",
+      sub: "بدون سسِ گوجه؛ خامه، پنیر و قارچِ کاراملی",
+      ing: [["خمیر پیتزا نیمه‌آماده", "۲ چانه"], ["خامه‌ی صبحانه", "نصف پیمانه"], ["پنیر موتزارلا", "۲۰۰ گرم"], ["قارچ", "۲۵۰ گرم"], ["سیر", "۲ حبه"], ["پارمزان", "۳ ق‌غ"], ["آویشن تازه", "چند شاخه"], ["فلفل سیاه", "به‌دلخواه"]],
+      steps: [
+        "فر را با سینی داخلش روی ۲۷۰ درجه پیش‌گرم کنید.",
+        "قارچ‌های ورقه‌شده را در تابه‌ی داغ با کمی کره سرخ کنید تا آبشان کاملاً بپرد و طلایی شوند.",
+        "خامه را با سیرِ رنده‌شده، نمک و فلفل مخلوط کنید.",
+        "خمیر را باز کنید، خامه را نازک بمالید، موتزارلا و قارچ را بچینید.",
+        "۸ دقیقه بپزید. بیرون که آمد، پارمزان، آویشن و فلفلِ تازه بزنید."
+      ],
+      tip: "قارچِ خام روی پیتزا آب می‌اندازد و خمیر را خیس می‌کند. همیشه از پیش سرخش کنید." },
+
+    { id: "r23", bread: "b9", meals: ["میان‌وعده", "مهمانی"], art: "knots", time: 35, serves: 6, level: "متوسط",
+      title: "گره‌های نان سیر",
+      sub: "از یک چانه خمیر، دوازده لقمه",
+      ing: [["خمیر پیتزا نیمه‌آماده", "۱ چانه"], ["کره‌ی آب‌شده", "۴ ق‌غ"], ["سیر", "۳ حبه"], ["جعفری خردشده", "۳ ق‌غ"], ["پارمزان", "۳ ق‌غ"], ["نمک", "به‌دلخواه"]],
+      steps: [
+        "خمیر را به نوارِ بلندِ دوسانتی ببُرید؛ هر نوار حدود ۱۵ سانتی‌متر.",
+        "هر نوار را یک بار گره بزنید و دو سرش را زیر گره بخوابانید.",
+        "روی سینی با فاصله بچینید، بپوشانید و ۲۰ دقیقه استراحت بدهید تا پف کند.",
+        "در فرِ ۲۱۰ درجه، ۱۲ تا ۱۴ دقیقه بپزید تا طلایی شوند.",
+        "کره را با سیرِ رنده‌شده و جعفری مخلوط کنید و تا گره‌ها داغ‌اند، رویشان بمالید. پارمزان بپاشید."
+      ],
+      tip: "کره‌ی سیر را روی نانِ داغ بزنید، نه قبل از پخت؛ سیر در فر می‌سوزد و تلخ می‌شود." },
+
+    { id: "r24", bread: "b9", meals: ["ناهار", "شام"], art: "calzone", time: 40, serves: 2, level: "متوسط",
+      title: "کلزونه‌ی اسفناج و پنیر",
+      sub: "پیتزایی که خودش را تا کرده",
+      ing: [["خمیر پیتزا نیمه‌آماده", "۲ چانه"], ["اسفناج تازه", "۴۰۰ گرم"], ["پنیر ریکوتا یا پنیر خامه‌ای", "۲۰۰ گرم"], ["موتزارلا", "۱۵۰ گرم"], ["سیر", "۲ حبه"], ["جوز هندی", "یک خراش"], ["زرده‌ی تخم‌مرغ", "۱ عدد"], ["نمک و فلفل", "به‌دلخواه"]],
+      steps: [
+        "اسفناج را با سیر در تابه پژمرده کنید، خنک شود و بعد با دست آبش را کاملاً بفشارید — این مهم‌ترین مرحله است.",
+        "اسفناج را با ریکوتا، موتزارلا، نمک، فلفل و جوز هندی مخلوط کنید.",
+        "خمیر را دایره‌ای باز کنید، مواد را روی نیمه‌ی آن بگذارید و دو سانت از لبه را خالی نگه دارید.",
+        "نیمه‌ی دیگر را رویش تا کنید، لبه‌ها را با انگشت فشار دهید و بعد بپیچانید تا محکم بسته شود.",
+        "رویش را زرده بمالید و دو شکاف کوچک با چاقو بزنید تا بخار خارج شود.",
+        "فرِ ۲۲۰ درجه، ۱۸ تا ۲۰ دقیقه تا طلایی شود. ۵ دقیقه استراحت بدهد."
+      ],
+      tip: "اگر شکافِ بخار را فراموش کنید، کلزونه در فر از پهلو می‌ترکد و همه‌ی پنیرش بیرون می‌ریزد." },
+
+    { id: "r25", bread: "b9", meals: ["صبحانه"], art: "pizza", time: 25, serves: 2, level: "آسان",
+      title: "پیتزای صبحانه با تخم‌مرغ",
+      sub: "صبحانه‌ی آخر هفته، روی خمیرِ نیمه‌آماده",
+      ing: [["خمیر پیتزا نیمه‌آماده", "۱ چانه"], ["تخم‌مرغ", "۲ عدد"], ["پنیر پیتزا", "۱ پیمانه"], ["قارچ یا ژامبون", "۱۰۰ گرم"], ["پیازچه", "۳ شاخه"], ["روغن زیتون", "۱ ق‌غ"], ["فلفل سیاه", "به‌دلخواه"]],
+      steps: [
+        "فر را روی ۲۵۰ درجه پیش‌گرم کنید. خمیر را باز کنید و روی سینیِ کاغذ روغنی‌دار بگذارید.",
+        "پنیر و قارچِ ورقه‌شده را بریزید و ۶ دقیقه بپزید.",
+        "سینی را بیرون بیاورید، با پشت قاشق دو گودی در پنیر بسازید و تخم‌مرغ‌ها را در آن بشکنید.",
+        "۵ تا ۶ دقیقه‌ی دیگر بپزید تا سفیده ببندد و زرده روان بماند.",
+        "پیازچه، فلفل و روغن زیتون بزنید و ببُرید."
+      ],
+      tip: "تخم‌مرغ را از اول نگذارید؛ تا خمیر بپزد، زرده کاملاً سفت شده است." },
+
+    { id: "r26", bread: "b9", meals: ["شیرین"], art: "sweet", time: 50, serves: 8, level: "متوسط",
+      title: "رول دارچینی با خمیر پیتزا",
+      sub: "همان چانه، این‌بار در نقشِ دسر",
+      ing: [["خمیر پیتزا نیمه‌آماده", "۲ چانه"], ["کره‌ی نرم", "۶۰ گرم"], ["شکر قهوه‌ای", "نصف پیمانه"], ["دارچین", "۲ ق‌غ"], ["پنیر خامه‌ای", "۱۰۰ گرم"], ["پودر قند", "نصف پیمانه"], ["شیر", "۲ ق‌غ"]],
+      steps: [
+        "خمیر را به مستطیلِ نازک باز کنید. کره‌ی نرم را تا لبه‌ها بمالید.",
+        "شکر قهوه‌ای و دارچین را مخلوط کنید و روی کره بپاشید.",
+        "از ضلع بلند، محکم لوله کنید و با نخ یا چاقوی تیز به هشت قاچ ببُرید.",
+        "در قالبِ کره‌مالی‌شده با فاصله بچینید، بپوشانید و ۲۰ دقیقه استراحت بدهید.",
+        "فرِ ۱۹۰ درجه، ۲۲ تا ۲۵ دقیقه تا طلایی شود.",
+        "پنیر خامه‌ای، پودر قند و شیر را بزنید و روی رول‌های ولرم بریزید."
+      ],
+      tip: "برای برشِ تمیز، یک نخ زیر لوله رد کنید، دو سرش را روی هم بکشید. چاقو لوله را له می‌کند." },
+
+    { id: "r27", bread: "b10", meals: ["صبحانه", "شیرین"], art: "frenchtoast", time: 20, serves: 2, level: "آسان",
+      title: "فرنچ‌تست کلاسیک",
+      sub: "با نان تستِ صبحانه‌ی لوو که خودش شیر و تخم‌مرغ دارد",
+      ing: [["نان تست صبحانه", "۴ برش"], ["تخم‌مرغ", "۲ عدد"], ["شیر", "نصف پیمانه"], ["وانیل", "۱ ق‌چ"], ["دارچین", "نصف ق‌چ"], ["کره", "۲ ق‌غ"], ["عسل یا شیره‌ی افرا", "برای سرو"], ["توت یا موز", "برای سرو"]],
+      steps: [
+        "تخم‌مرغ، شیر، وانیل، دارچین و یک ذره نمک را در ظرفِ پهن خوب هم بزنید تا رگه‌ی سفیده نماند.",
+        "هر برش را ۲۰ ثانیه از هر طرف در مایه بخوابانید — بیشتر نه، وگرنه وسطش خیس می‌ماند.",
+        "تابه را روی شعله‌ی متوسط با کره داغ کنید. برش‌ها را هر طرف ۲ تا ۳ دقیقه بپزید تا طلایی شود.",
+        "با عسل و میوه‌ی تازه سرو کنید."
+      ],
+      tip: "شعله‌ی زیاد، بیرون را می‌سوزاند و داخل را خام می‌گذارد. شعله‌ی متوسط و صبر." },
+
+    { id: "r28", bread: "b10", meals: ["میان‌وعده", "ناهار"], art: "sandwich", time: 12, serves: 2, level: "آسان",
+      title: "ساندویچ گریلِ پنیر",
+      sub: "چهار برش نان، دو نوع پنیر، یک تابه",
+      ing: [["نان تست صبحانه", "۴ برش"], ["پنیر چدار", "۸۰ گرم"], ["پنیر موتزارلا", "۸۰ گرم"], ["کره‌ی نرم", "۲ ق‌غ"], ["خردل", "۱ ق‌چ"], ["فلفل سیاه", "به‌دلخواه"]],
+      steps: [
+        "بیرونِ هر برش را کره بمالید و داخلش را نازک خردل بزنید.",
+        "دو نوع پنیرِ رنده‌شده را مخلوط کنید و لای نان بریزید — ترکیبِ پنیرِ خوش‌طعم و پنیرِ کِش‌دار، رمزِ کار است.",
+        "تابه را روی شعله‌ی کم داغ کنید و ساندویچ را با یک بشقاب سنگین روی آن بگذارید.",
+        "هر طرف ۳ تا ۴ دقیقه، روی شعله‌ی کم، تا پنیر کاملاً آب شود و نان طلایی."
+      ],
+      tip: "شعله باید کم باشد. روی شعله‌ی زیاد نان می‌سوزد و پنیرِ وسط هنوز سرد است." },
+
+    { id: "r29", bread: "b11", meals: ["ناهار"], art: "sandwich", time: 20, serves: 2, level: "آسان",
+      title: "کلاب ساندویچ چندغله",
+      sub: "سه طبقه، با نانی که خودش دانه دارد",
+      ing: [["تست چندغله", "۶ برش"], ["سینه‌ی مرغ پخته", "۲۰۰ گرم"], ["گوجه", "۱ عدد"], ["کاهو", "۴ برگ"], ["تخم‌مرغ آب‌پز", "۲ عدد"], ["مایونز و ماست چکیده", "۲ ق‌غ از هر کدام"], ["خردل", "۱ ق‌چ"], ["نمک و فلفل", "به‌دلخواه"]],
+      steps: [
+        "برش‌ها را برشته کنید؛ نانِ چندغله بدون برشته‌شدن زیر وزن مواد وا می‌رود.",
+        "مایونز، ماست چکیده، خردل، نمک و فلفل را مخلوط کنید.",
+        "طبقه‌ی اول: نان، سس، کاهو، مرغِ نواری. طبقه‌ی دوم: نان، سس، گوجه، تخم‌مرغِ ورقه‌شده.",
+        "نان سوم را رو بگذارید، چهار خلال چوبی در چهار گوشه فرو کنید و اریب به چهار مثلث ببُرید."
+      ],
+      tip: "گوجه را روی دستمال بگذارید و نمک بزنید تا آبش برود؛ ساندویچ تا آخر خشک می‌ماند." },
+
+    { id: "r30", bread: "b11", meals: ["صبحانه", "میان‌وعده"], art: "toast", time: 10, serves: 2, level: "آسان",
+      title: "تست ریکوتا، انجیر و عسل",
+      sub: "شیرین و شور، روی نانِ پُردانه",
+      ing: [["تست چندغله", "۲ برش"], ["پنیر ریکوتا یا پنیر خامه‌ای", "۴ ق‌غ"], ["انجیر تازه یا خشک", "۳ عدد"], ["عسل", "۱ ق‌غ"], ["پسته‌ی خردشده", "۱ ق‌غ"], ["پوست لیموی رنده‌شده", "کمی"], ["نمک دریا", "یک ذره"]],
+      steps: [
+        "برش‌ها را برشته کنید تا دانه‌های روی نان عطر بدهند.",
+        "ریکوتا را با پوستِ لیمو و یک ذره نمک مخلوط کنید و روی نان بمالید.",
+        "انجیرِ قاچ‌شده را بچینید، عسل بچرخانید و پسته بپاشید.",
+        "اگر انجیر خشک است، ۱۰ دقیقه در آب گرم بخوابانید تا نرم شود."
+      ],
+      tip: "پوستِ لیمو در این دستور اختیاری به‌نظر می‌رسد، اما همان چیزی است که ریکوتا را از حالتِ بی‌مزه بیرون می‌آورد." }
+  ];
+
+  /* ---------------- artwork ---------------- */
+
+  var ART = {
+    loaf: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><ellipse cx="60" cy="74" rx="40" ry="5" fill="var(--a2)" opacity=".2"/><path d="M18 56c0-18 18-31 42-31s42 13 42 31c0 10-7 16-17 16H35c-10 0-17-6-17-16Z" fill="var(--a1)"/><path d="M40 32 34 66M60 29l-3 37M80 32l6 34" stroke="var(--a2)" stroke-width="3.4" stroke-linecap="round"/></svg>',
+    baguette: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><rect x="10" y="36" width="100" height="24" rx="12" fill="var(--a1)" transform="rotate(-9 60 48)"/><path d="M30 39l-5 9M47 35l-5 9M64 31l-5 9M81 27l-5 9" stroke="var(--a2)" stroke-width="3.4" stroke-linecap="round"/></svg>',
+    focaccia: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><rect x="16" y="24" width="88" height="44" rx="9" fill="var(--a1)"/><circle cx="36" cy="40" r="4" fill="var(--a2)"/><circle cx="60" cy="52" r="4" fill="var(--a2)"/><circle cx="84" cy="38" r="4" fill="var(--a2)"/><circle cx="48" cy="60" r="3" fill="var(--a2)"/><circle cx="76" cy="58" r="3" fill="var(--a2)"/><circle cx="60" cy="33" r="3" fill="var(--a2)"/></svg>',
+    dough: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><ellipse cx="60" cy="72" rx="36" ry="4" fill="var(--a2)" opacity=".2"/><path d="M28 50c0-14 14-25 32-25s32 11 32 25-14 20-32 20-32-6-32-20Z" fill="var(--a1)"/><path d="M44 42c3-3 7-3 10 0M68 52c3-3 7-3 10 0" stroke="var(--a2)" stroke-width="3" stroke-linecap="round"/></svg>',
+    toastloaf: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><path d="M26 34c0-6 5-10 12-10h44c7 0 12 4 12 10v28c0 5-4 8-9 8H35c-5 0-9-3-9-8V34Z" fill="var(--a1)"/><path d="M40 24v46M60 24v46M80 24v46" stroke="var(--a2)" stroke-width="2.6"/></svg>',
+    toast: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><path d="M32 38c0-11 12-19 28-19s28 8 28 19c0 6-4 10-9 11v18c0 4-3 7-7 7H48c-4 0-7-3-7-7V49c-5-1-9-5-9-11Z" fill="var(--a1)"/><path d="M50 46h20M50 57h13" stroke="var(--a2)" stroke-width="3.4" stroke-linecap="round"/><circle cx="72" cy="59" r="4.5" fill="var(--a2)"/></svg>',
+    frenchtoast: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><rect x="26" y="30" width="52" height="40" rx="8" fill="var(--a1)" transform="rotate(-8 52 50)"/><rect x="44" y="26" width="52" height="40" rx="8" fill="var(--a1)" opacity=".75" transform="rotate(7 70 46)"/><path d="M58 22c4 5 0 8-3 11" stroke="var(--a2)" stroke-width="3" stroke-linecap="round"/></svg>',
+    sandwich: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><path d="M26 58 60 22l34 36H26Z" fill="var(--a1)"/><path d="M36 50h48M42 42h36" stroke="var(--a2)" stroke-width="3.6" stroke-linecap="round"/><rect x="26" y="58" width="68" height="9" rx="4" fill="var(--a2)"/></svg>',
+    opensandwich: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><rect x="22" y="40" width="76" height="22" rx="8" fill="var(--a1)"/><path d="M30 40c6-8 14-12 22-12s16 4 22 12" stroke="var(--a2)" stroke-width="3.6" stroke-linecap="round" fill="none"/><circle cx="46" cy="51" r="5" fill="var(--a2)"/><circle cx="66" cy="51" r="5" fill="var(--a2)"/><circle cx="84" cy="51" r="4" fill="var(--a2)"/></svg>',
+    tartine: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><rect x="20" y="42" width="80" height="20" rx="9" fill="var(--a1)"/><path d="M36 42c0-7 6-12 13-12s13 5 13 12M66 42c0-6 5-10 11-10s11 4 11 10" stroke="var(--a2)" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M30 36c3-4 8-4 11 0" stroke="var(--a2)" stroke-width="3" stroke-linecap="round"/></svg>',
+    pizza: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><circle cx="60" cy="45" r="32" fill="var(--a1)"/><circle cx="60" cy="45" r="24" fill="var(--a2)" opacity=".28"/><circle cx="51" cy="37" r="4.5" fill="var(--a2)"/><circle cx="70" cy="42" r="4.5" fill="var(--a2)"/><circle cx="57" cy="56" r="4.5" fill="var(--a2)"/></svg>',
+    calzone: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><path d="M24 62c0-20 16-36 36-36s36 16 36 36H24Z" fill="var(--a1)"/><path d="M24 62h72" stroke="var(--a2)" stroke-width="4" stroke-linecap="round"/><path d="M52 40l6 6M68 46l6 6" stroke="var(--a2)" stroke-width="3.4" stroke-linecap="round"/></svg>',
+    knots: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><circle cx="42" cy="40" r="15" fill="var(--a1)"/><circle cx="76" cy="38" r="15" fill="var(--a1)"/><circle cx="59" cy="62" r="15" fill="var(--a1)"/><path d="M36 40c4-5 8-5 12 0M70 38c4-5 8-5 12 0M53 62c4-5 8-5 12 0" stroke="var(--a2)" stroke-width="3" stroke-linecap="round"/></svg>',
+    bowl: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><path d="M24 44h72c0 16-16 26-36 26S24 60 24 44Z" fill="var(--a1)"/><rect x="18" y="38" width="84" height="8" rx="4" fill="var(--a2)"/><path d="M48 26c4-5 0-8-2-11M62 24c4-5 0-8-2-11M76 26c4-5 0-8-2-11" stroke="var(--a2)" stroke-width="3" stroke-linecap="round"/></svg>',
+    salad: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><path d="M26 46h68c0 15-15 24-34 24S26 61 26 46Z" fill="var(--a1)"/><circle cx="44" cy="38" r="9" fill="var(--a2)"/><circle cx="62" cy="34" r="10" fill="var(--a2)" opacity=".7"/><circle cx="80" cy="39" r="8" fill="var(--a2)"/><rect x="52" y="42" width="9" height="9" rx="2" fill="var(--a2)" opacity=".5"/></svg>',
+    board: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><rect x="16" y="52" width="88" height="10" rx="5" fill="var(--a2)"/><path d="M28 52 42 28l14 24H28Z" fill="var(--a1)"/><rect x="60" y="34" width="22" height="18" rx="4" fill="var(--a1)"/><circle cx="90" cy="44" r="7" fill="var(--a1)"/></svg>',
+    egg: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><circle cx="58" cy="46" r="30" fill="var(--a1)"/><circle cx="58" cy="46" r="11" fill="var(--a2)"/><rect x="84" y="42" width="24" height="7" rx="3.5" fill="var(--a2)"/></svg>',
+    casserole: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><rect x="22" y="38" width="76" height="30" rx="7" fill="var(--a1)"/><rect x="16" y="32" width="88" height="10" rx="5" fill="var(--a2)"/><path d="M40 52h10M58 52h10M76 52h6M40 61h14M62 61h12" stroke="var(--a2)" stroke-width="3" stroke-linecap="round"/></svg>',
+    sweet: '<svg viewBox="0 0 120 90" fill="none" aria-hidden="true"><path d="M30 66V44c0-8 13-14 30-14s30 6 30 14v22H30Z" fill="var(--a1)"/><path d="M30 46c6 6 12 0 18 5s12 0 18 5 12-1 18 4" stroke="var(--a2)" stroke-width="4" stroke-linecap="round" fill="none"/><circle cx="60" cy="24" r="5" fill="var(--a2)"/></svg>'
+  };
+
+  var TONE_VARS = {
+    honey: "--art-bg:var(--honey-bg);--a1:var(--honey-1);--a2:var(--honey-2)",
+    olive: "--art-bg:var(--olive-bg);--a1:var(--olive-1);--a2:var(--olive-2)",
+    ember: "--art-bg:var(--ember-bg);--a1:var(--ember-1);--a2:var(--ember-2)",
+    rose:  "--art-bg:var(--rose-bg);--a1:var(--rose-1);--a2:var(--rose-2)",
+    cocoa: "--art-bg:var(--cocoa-bg);--a1:var(--cocoa-1);--a2:var(--cocoa-2)"
+  };
+
+  /* ---------------- helpers ---------------- */
+
+  var FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+
+  function fa(n) {
+    return String(n).replace(/\d/g, function (d) { return FA_DIGITS[+d]; });
+  }
+  function toman(n) {
+    return fa(String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "٬")) + " تومان";
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function breadOf(id) {
+    for (var i = 0; i < BREADS.length; i++) if (BREADS[i].id === id) return BREADS[i];
+    return null;
+  }
+  function recipeOf(id) {
+    for (var i = 0; i < RECIPES.length; i++) if (RECIPES[i].id === id) return RECIPES[i];
+    return null;
+  }
+  function toneOf(r) { return MEAL_TONE[r.meals[0]] || "honey"; }
+
+  var store = {
+    get: function (k, fb) {
+      try { var v = localStorage.getItem(k); return v === null ? fb : JSON.parse(v); }
+      catch (e) { return fb; }
+    },
+    set: function (k, v) {
+      try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {}
+    }
+  };
+
+  /* ---------------- state ---------------- */
+
+  var state = {
+    view: "recipes",
+    meal: "همه",
+    bread: null,
+    q: "",
+    favs: store.get("levo.favs", []),
+    checks: store.get("levo.checks", {})
+  };
+  if (!Array.isArray(state.favs)) state.favs = [];
+  if (!state.checks || typeof state.checks !== "object") state.checks = {};
+
+  /* ---------------- rendering ---------------- */
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  function cardHTML(r) {
+    var b = breadOf(r.bread);
+    var tone = TONE_VARS[toneOf(r)];
+    var isFav = state.favs.indexOf(r.id) > -1;
+    return '<button class="card" type="button" data-recipe="' + r.id + '">' +
+      '<span class="card-art" style="' + tone + '">' + ART[r.art] +
+        '<span class="fav" role="button" tabindex="0" data-fav="' + r.id + '" aria-pressed="' + isFav + '" aria-label="نشان‌کردن ' + esc(r.title) + '">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.6 12 20 12 20Z"/></svg>' +
+        '</span>' +
+      '</span>' +
+      '<span class="card-body">' +
+        '<h3 class="card-title">' + esc(r.title) + '</h3>' +
+        '<p class="card-sub">' + esc(r.sub) + '</p>' +
+        '<span class="card-meta"><span>' + fa(r.time) + ' دقیقه</span><i class="dot"></i><span>' + esc(b ? b.short : "") + '</span></span>' +
+      '</span>' +
+    '</button>';
+  }
+
+  function matches(r) {
+    if (state.meal !== "همه" && r.meals.indexOf(state.meal) === -1) return false;
+    if (state.bread && r.bread !== state.bread) return false;
+    if (state.q) {
+      var hay = (r.title + " " + r.sub + " " + r.meals.join(" ") + " " +
+        r.ing.map(function (x) { return x[0]; }).join(" ") + " " +
+        (breadOf(r.bread) ? breadOf(r.bread).name : "")).toLowerCase();
+      if (hay.indexOf(state.q.toLowerCase()) === -1) return false;
+    }
+    return true;
+  }
+
+  function renderRecipes() {
+    var list = RECIPES.filter(matches);
+    $("recipeGrid").innerHTML = list.map(cardHTML).join("");
+    $("recipeEmpty").hidden = list.length > 0;
+    $("recipesCount").textContent = fa(list.length) + " دستور";
+
+    var b = state.bread ? breadOf(state.bread) : null;
+    $("recipesHeading").textContent = b ? "با " + b.short :
+      (state.meal === "همه" ? "همه‌ی دستورها" : "برای " + state.meal);
+    $("breadFilterNote").hidden = !b;
+    if (b) $("breadFilterText").textContent = "فقط دستورهای «" + b.name + "»";
+  }
+
+  function renderMealRail() {
+    var items = ["همه"].concat(MEALS);
+    $("mealRail").innerHTML = items.map(function (m) {
+      return '<button class="chip" type="button" data-meal="' + esc(m) + '" aria-pressed="' +
+        (state.meal === m) + '">' + esc(m) + "</button>";
+    }).join("");
+  }
+
+  function renderBreads() {
+    $("breadsCount").textContent = fa(BREADS.length) + " نان";
+    $("breadList").innerHTML = BREADS.map(function (b) {
+      var n = RECIPES.filter(function (r) { return r.bread === b.id; }).length;
+      return '<button class="bread" type="button" data-bread="' + b.id + '">' +
+        '<span class="bread-art" style="' + TONE_VARS[b.tone] + '">' + ART[b.art] + '</span>' +
+        '<span class="bread-main">' +
+          '<h3 class="bread-name">' + esc(b.name) + '</h3>' +
+          '<p class="bread-desc">' + esc(b.desc) + '</p>' +
+          '<span class="bread-foot"><b class="price">' + toman(b.price) + '</b><i class="dot" style="width:3px;height:3px;border-radius:50%;background:currentColor;display:inline-block"></i><span>' + esc(b.unit) + '</span><i class="dot" style="width:3px;height:3px;border-radius:50%;background:currentColor;display:inline-block"></i><span>' + fa(n) + ' دستور</span></span>' +
+        '</span>' +
+      '</button>';
+    }).join("");
+  }
+
+  function renderSaved() {
+    var list = RECIPES.filter(function (r) { return state.favs.indexOf(r.id) > -1; });
+    $("savedGrid").innerHTML = list.map(cardHTML).join("");
+    $("savedEmpty").hidden = list.length > 0;
+    $("savedCount").textContent = list.length ? fa(list.length) + " دستور" : "";
+    var badge = $("savedBadge");
+    badge.hidden = list.length === 0;
+    badge.textContent = fa(list.length);
+  }
+
+  function setView(v) {
+    state.view = v;
+    ["recipes", "breads", "saved", "guide"].forEach(function (name) {
+      $("view-" + name).hidden = name !== v;
+    });
+    Array.prototype.forEach.call($("tabbar").children, function (t) {
+      t.setAttribute("aria-selected", String(t.dataset.view === v));
+    });
+    if (v === "saved") renderSaved();
+    window.scrollTo({ top: 0, behavior: "instant" in document.body.style ? "instant" : "auto" });
+  }
+
+  /* ---------------- recipe sheet ---------------- */
+
+  function sheetHTML(r) {
+    var b = breadOf(r.bread);
+    var tone = TONE_VARS[toneOf(r)];
+    var checks = state.checks[r.id] || [];
+    var isFav = state.favs.indexOf(r.id) > -1;
+
+    var related = RECIPES.filter(function (x) { return x.bread === r.bread && x.id !== r.id; }).slice(0, 6);
+
+    return '<div class="sheet-inner">' +
+      '<div class="sheet-art" style="' + tone + '">' +
+        '<div class="sheet-nav">' +
+          '<button class="icon-btn" type="button" data-close aria-label="بازگشت">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>' +
+          '</button>' +
+          '<button class="icon-btn' + (isFav ? " is-on" : "") + '" type="button" data-fav="' + r.id + '" aria-pressed="' + isFav + '" aria-label="نشان‌کردن">' +
+            '<svg viewBox="0 0 24 24" fill="' + (isFav ? "currentColor" : "none") + '" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.6 12 20 12 20Z"/></svg>' +
+          '</button>' +
+        '</div>' +
+        ART[r.art].replace("<svg ", '<svg class="hero-svg" ') +
+      '</div>' +
+
+      '<div class="sheet-head">' +
+        '<p class="eyebrow">' + esc(r.meals.join(" · ")) + '</p>' +
+        '<h2>' + esc(r.title) + '</h2>' +
+        '<p class="lede">' + esc(r.sub) + '</p>' +
+      '</div>' +
+
+      '<dl class="facts">' +
+        '<div class="fact"><dt>زمان</dt><dd>' + fa(r.time) + ' دقیقه</dd></div>' +
+        '<div class="fact"><dt>برای</dt><dd>' + fa(r.serves) + ' نفر</dd></div>' +
+        '<div class="fact"><dt>سطح</dt><dd>' + esc(r.level) + '</dd></div>' +
+      '</dl>' +
+
+      (b ? '<div class="base-bread">' +
+        '<span class="bread-art" style="' + TONE_VARS[b.tone] + '">' + ART[b.art] + '</span>' +
+        '<span class="t"><span>نانِ پایه</span><b>' + esc(b.name) + '</b><span style="color:var(--kraft);font-weight:600">' + toman(b.price) + '</span></span>' +
+        '<a class="order-btn" href="' + ORDER_URL + '" target="_blank" rel="noopener">سفارش</a>' +
+      '</div>' : "") +
+
+      '<section class="sheet-section">' +
+        '<h3>مواد لازم <span class="hint">بزن تا تیک بخورد</span></h3>' +
+        '<ul class="ing">' + r.ing.map(function (row, i) {
+          var on = checks.indexOf(i) > -1;
+          return '<li><label><input type="checkbox" id="' + r.id + '-ing-' + i + '" data-check="' + i + '"' + (on ? " checked" : "") + '>' +
+            '<span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg></span>' +
+            '<span class="txt">' + esc(row[0]) + ' — <span class="amt">' + esc(row[1]) + '</span></span></label></li>';
+        }).join("") + '</ul>' +
+      '</section>' +
+
+      '<section class="sheet-section">' +
+        '<h3>مرحله‌به‌مرحله</h3>' +
+        '<ol class="steps">' + r.steps.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("") + '</ol>' +
+      '</section>' +
+
+      '<div class="tip">' +
+        '<b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5.9 1.1 1 1.7h5.2c.1-.6.4-1.2 1-1.7A6 6 0 0 0 12 3Z"/></svg>نکته‌ی لوو</b>' +
+        '<p>' + esc(r.tip) + '</p>' +
+      '</div>' +
+
+      (related.length ? '<section class="sheet-section">' +
+        '<h3>با همین نان</h3>' +
+        '<div class="related">' + related.map(cardHTML).join("") + '</div>' +
+      '</section>' : "") +
+    '</div>';
+  }
+
+  var lastFocus = null;
+
+  function openRecipe(id) {
+    var r = recipeOf(id);
+    if (!r) return;
+    lastFocus = document.activeElement;
+    var sheet = $("sheet");
+    sheet.innerHTML = sheetHTML(r);
+    sheet.dataset.recipe = id;
+    sheet.hidden = false;
+    sheet.scrollTop = 0;
+    document.body.style.overflow = "hidden";
+    var back = sheet.querySelector("[data-close]");
+    if (back) back.focus();
+    if (history.state === null || history.state.sheet !== id) {
+      try { history.pushState({ sheet: id }, ""); } catch (e) {}
+    }
+  }
+
+  function closeRecipe(fromPop) {
+    var sheet = $("sheet");
+    if (sheet.hidden) return;
+    sheet.hidden = true;
+    sheet.innerHTML = "";
+    delete sheet.dataset.recipe;
+    document.body.style.overflow = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    if (!fromPop && history.state && history.state.sheet) {
+      try { history.back(); } catch (e) {}
+    }
+  }
+
+  /* ---------------- favourites ---------------- */
+
+  function toggleFav(id) {
+    var i = state.favs.indexOf(id);
+    if (i > -1) state.favs.splice(i, 1); else state.favs.push(id);
+    store.set("levo.favs", state.favs);
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-fav="' + id + '"]'), function (el) {
+      var on = state.favs.indexOf(id) > -1;
+      el.setAttribute("aria-pressed", String(on));
+      el.classList.toggle("is-on", on && el.classList.contains("icon-btn"));
+      var svg = el.querySelector("svg");
+      if (svg && el.classList.contains("icon-btn")) svg.setAttribute("fill", on ? "currentColor" : "none");
+    });
+
+    var badge = $("savedBadge");
+    badge.hidden = state.favs.length === 0;
+    badge.textContent = fa(state.favs.length);
+    if (state.view === "saved") renderSaved();
+  }
+
+  /* ---------------- events ---------------- */
+
+  document.addEventListener("click", function (e) {
+    var favEl = e.target.closest ? e.target.closest("[data-fav]") : null;
+    if (favEl) { e.preventDefault(); e.stopPropagation(); toggleFav(favEl.dataset.fav); return; }
+
+    var close = e.target.closest && e.target.closest("[data-close]");
+    if (close) { closeRecipe(); return; }
+
+    var card = e.target.closest && e.target.closest("[data-recipe]");
+    if (card) { openRecipe(card.dataset.recipe); return; }
+
+    var chip = e.target.closest && e.target.closest("[data-meal]");
+    if (chip) {
+      state.meal = chip.dataset.meal;
+      renderMealRail();
+      renderRecipes();
+      return;
+    }
+
+    var bread = e.target.closest && e.target.closest("[data-bread]");
+    if (bread) {
+      state.bread = bread.dataset.bread;
+      state.meal = "همه";
+      renderMealRail();
+      renderRecipes();
+      setView("recipes");
+      return;
+    }
+
+    var tab = e.target.closest && e.target.closest("[data-view]");
+    if (tab) { setView(tab.dataset.view); return; }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeRecipe();
+    if ((e.key === "Enter" || e.key === " ") && e.target.closest && e.target.closest("[data-fav]")) {
+      e.preventDefault();
+      toggleFav(e.target.closest("[data-fav]").dataset.fav);
+    }
+  });
+
+  document.addEventListener("change", function (e) {
+    var cb = e.target.closest && e.target.closest("[data-check]");
+    if (!cb) return;
+    var sheet = $("sheet");
+    var id = sheet.dataset.recipe;
+    if (!id) return;
+    var arr = state.checks[id] || [];
+    var idx = parseInt(cb.dataset.check, 10);
+    var at = arr.indexOf(idx);
+    if (cb.checked && at === -1) arr.push(idx);
+    if (!cb.checked && at > -1) arr.splice(at, 1);
+    state.checks[id] = arr;
+    store.set("levo.checks", state.checks);
+  });
+
+  window.addEventListener("popstate", function () { closeRecipe(true); });
+
+  $("clearBread").addEventListener("click", function () {
+    state.bread = null;
+    renderRecipes();
+  });
+
+  var searchInput = $("searchInput");
+  searchInput.addEventListener("input", function () {
+    state.q = searchInput.value.trim();
+    $("clearSearch").hidden = state.q === "";
+    renderRecipes();
+  });
+  $("clearSearch").addEventListener("click", function () {
+    searchInput.value = "";
+    state.q = "";
+    $("clearSearch").hidden = true;
+    renderRecipes();
+    searchInput.focus();
+  });
+
+  $("shuffleBtn").addEventListener("click", function () {
+    var pool = RECIPES.filter(matches);
+    if (!pool.length) pool = RECIPES;
+    openRecipe(pool[Math.floor(Math.random() * pool.length)].id);
+  });
+
+  /* ---------------- install ---------------- */
+
+  var deferredPrompt = null;
+  var installBtn = $("installBtn");
+
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.classList.add("is-on");
+  });
+
+  installBtn.addEventListener("click", function () {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt = null;
+      installBtn.classList.remove("is-on");
+      return;
+    }
+    setView("guide");
+    var notes = document.querySelectorAll("#view-guide .note");
+    var target = notes[notes.length - 2];
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  /* ---------------- boot ---------------- */
+
+  renderMealRail();
+  renderRecipes();
+  renderBreads();
+  renderSaved();
+  setView("recipes");
+})();
+</script>
