@@ -1,6 +1,6 @@
 /* Levo Kitchen — offline shell.
    Bump CACHE whenever index.html or the icons change. */
-const CACHE = "levo-kitchen-v1";
+const CACHE = "levo-kitchen-v2";
 
 const SHELL = [
   "./",
@@ -10,8 +10,14 @@ const SHELL = [
   "./icon-512.png",
   "./icon-maskable-512.png",
   "./apple-touch-icon.png",
-  "./favicon-32.png"
+  "./favicon-32.png",
+  "./data/prices.json"
 ];
+
+// Synced by build/sync-snappfood.js; refreshed on every load when online,
+// but must still resolve instantly offline — so it gets its own strategy
+// below instead of falling into the generic same-origin cache-first rule.
+const PRICES_PATH = "./data/prices.json";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -34,6 +40,22 @@ self.addEventListener("fetch", (event) => {
   if (req.method !== "GET") return;
 
   const url = new URL(req.url);
+
+  // Live prices: network first with a short timeout, cache as the fallback —
+  // freshest number when online, last-known number offline.
+  if (url.origin === self.location.origin && url.pathname.endsWith("/data/prices.json")) {
+    event.respondWith(
+      Promise.race([
+        fetch(req).then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put(PRICES_PATH, copy));
+          return res;
+        }),
+        new Promise((_, reject) => setTimeout(reject, 4000))
+      ]).catch(() => caches.match(PRICES_PATH))
+    );
+    return;
+  }
 
   // Navigations: network first so a redeploy is picked up, cache as the fallback.
   if (req.mode === "navigate") {

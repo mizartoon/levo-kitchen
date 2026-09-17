@@ -1,0 +1,18 @@
+{
+  "updatedAt": null,
+  "source": "manual-seed",
+  "note": "این فایل را build/sync-snappfood.js می‌نویسد. اجرای دستی یا زمان‌بندی‌شده روی کامپیوتری با IP ایران — جزئیات در README.",
+  "items": {
+    "b1":  { "price": 175000, "available": true, "stock": null },
+    "b2":  { "price": 195000, "available": true, "stock": null },
+    "b3":  { "price": 205000, "available": true, "stock": null },
+    "b4":  { "price": 280000, "available": true, "stock": null },
+    "b5":  { "price": 260000, "available": true, "stock": null },
+    "b6":  { "price": 85000,  "available": true, "stock": null },
+    "b7":  { "price": 75000,  "available": true, "stock": null },
+    "b8":  { "price": 50000,  "available": true, "stock": null },
+    "b9":  { "price": 90000,  "available": true, "stock": null },
+    "b10": { "price": 130000, "available": true, "stock": null },
+    "b11": { "price": 175000, "available": true, "stock": null }
+  }
+}

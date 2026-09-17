@@ -181,8 +181,8 @@
   .brand-sub {
     display: block;
     font-family: 'Vazirmatn', sans-serif;
-    font-size: .66rem;
-    letter-spacing: .12em;
+    font-size: .74rem;
+    letter-spacing: .1em;
     color: var(--ink-3);
     line-height: 1.4;
   }
@@ -226,7 +226,7 @@
     overflow: hidden;
   }
   .hero-kicker {
-    font-size: .68rem; letter-spacing: .16em; color: var(--kraft);
+    font-size: .74rem; letter-spacing: .14em; color: var(--kraft);
     font-weight: 600; margin: 0 0 6px;
   }
   .hero h1 {
@@ -341,7 +341,7 @@
   .card-sub { font-size: .76rem; color: var(--ink-2); line-height: 1.6; margin: 0; }
   .card-meta {
     margin-top: auto; padding-top: 7px; display: flex; align-items: center; gap: 6px;
-    font-size: .7rem; color: var(--ink-3); font-variant-numeric: tabular-nums;
+    font-size: .74rem; color: var(--ink-3); font-variant-numeric: tabular-nums;
     border-top: 1px dashed var(--line);
   }
   .card-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: currentColor; flex: none; }
@@ -370,8 +370,27 @@
   .bread-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
   .bread-name { font-family: 'Lalezar', 'Vazirmatn', sans-serif; font-weight: 400; font-size: .99rem; margin: 0; line-height: 1.5; }
   .bread-desc { font-size: .76rem; color: var(--ink-2); margin: 0; line-height: 1.65; }
-  .bread-foot { display: flex; align-items: center; gap: 8px; margin-top: 4px; font-size: .74rem; color: var(--ink-3); }
+  .bread-foot { display: flex; align-items: center; gap: 8px; margin-top: 4px; font-size: .74rem; color: var(--ink-3); flex-wrap: wrap; }
   .price { font-weight: 600; color: var(--kraft); font-variant-numeric: tabular-nums; }
+
+  .bread.is-out { opacity: .55; }
+  .bread.is-out .price { text-decoration: line-through; color: var(--ink-3); }
+
+  .stock-badge {
+    font-size: .74rem; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+    line-height: 1.6;
+  }
+  .stock-badge.is-out { background: color-mix(in srgb, var(--rust) 16%, var(--surface)); color: var(--rust); }
+  .stock-badge.is-low { background: color-mix(in srgb, var(--terracotta) 18%, var(--surface)); color: var(--kraft); }
+
+  .sync-note {
+    display: flex; align-items: center; gap: 6px;
+    margin: 8px 0 0; font-size: .74rem; color: var(--ink-3);
+  }
+  .sync-note::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--sage); flex: none;
+  }
 
   /* ---------- guide ---------- */
   .note {
@@ -401,7 +420,7 @@
     content: counter(s); position: absolute; inset-inline-start: 0; top: 3px;
     width: 21px; height: 21px; border-radius: 50%;
     background: var(--cream-2); color: var(--kraft);
-    display: grid; place-items: center; font-size: .72rem; font-weight: 700;
+    display: grid; place-items: center; font-size: .74rem; font-weight: 700;
   }
 
   /* ---------- bottom tabs ---------- */
@@ -418,15 +437,15 @@
   }
   .tab {
     display: flex; flex-direction: column; align-items: center; gap: 3px;
-    padding: 9px 4px 10px; color: var(--ink-3); font-size: .68rem; font-weight: 500;
+    padding: 9px 4px 10px; color: var(--ink-3); font-size: .74rem; font-weight: 500;
   }
   .tab svg { width: 21px; height: 21px; }
   .tab[aria-selected="true"] { color: var(--rust); }
   .tab .badge {
-    position: absolute; transform: translate(-13px, -4px);
-    min-width: 15px; height: 15px; padding: 0 4px; border-radius: 999px;
+    position: absolute; transform: translate(-14px, -5px);
+    min-width: 17px; height: 17px; padding: 0 4px; border-radius: 999px;
     background: var(--rust); color: var(--rust-ink);
-    font-size: .6rem; font-weight: 700; display: grid; place-items: center;
+    font-size: .74rem; font-weight: 700; display: grid; place-items: center;
     font-variant-numeric: tabular-nums;
   }
 
@@ -457,7 +476,7 @@
   .sheet-head { padding: 18px 16px 0; }
   .eyebrow {
     display: inline-flex; align-items: center; gap: 6px;
-    font-size: .7rem; letter-spacing: .1em; font-weight: 600;
+    font-size: .74rem; letter-spacing: .08em; font-weight: 600;
     color: var(--kraft); margin-bottom: 6px;
   }
   .sheet-head h2 {
@@ -473,7 +492,7 @@
   }
   .fact { padding: 11px 8px; text-align: center; border-inline-start: 1px solid var(--line); }
   .fact:first-child { border-inline-start: 0; }
-  .fact dt { font-size: .68rem; color: var(--ink-3); letter-spacing: .06em; }
+  .fact dt { font-size: .74rem; color: var(--ink-3); letter-spacing: .04em; }
   .fact dd { margin: 2px 0 0; font-weight: 600; font-size: .86rem; font-variant-numeric: tabular-nums; }
 
   .base-bread {
@@ -482,10 +501,12 @@
     border-radius: 14px; background: var(--surface-2);
     border: 1px solid var(--line);
   }
+  .base-bread.is-out { opacity: .7; }
   .base-bread .bread-art { width: 46px; height: 46px; border-radius: 10px; }
   .base-bread .t { flex: 1; min-width: 0; }
-  .base-bread .t span { display: block; font-size: .68rem; color: var(--ink-3); letter-spacing: .08em; }
+  .base-bread .t > span:not(.stock-badge) { display: block; font-size: .74rem; color: var(--ink-3); letter-spacing: .06em; }
   .base-bread .t b { font-weight: 600; font-size: .87rem; display: block; line-height: 1.5; }
+  .base-bread .stock-badge { display: inline-block; margin-top: 3px; }
   .order-btn {
     flex: none; padding: 8px 14px; border-radius: 999px;
     background: var(--ink); color: var(--cream);
@@ -498,7 +519,7 @@
     font-size: 1.12rem; margin: 0 0 4px;
     display: flex; align-items: center; justify-content: space-between; gap: 10px;
   }
-  .sheet-section > h3 .hint { font-family: 'Vazirmatn', sans-serif; font-size: .72rem; color: var(--ink-3); font-weight: 400; }
+  .sheet-section > h3 .hint { font-family: 'Vazirmatn', sans-serif; font-size: .74rem; color: var(--ink-3); font-weight: 400; }
 
   .ing { list-style: none; margin: 8px 0 0; padding: 0; }
   .ing li { border-bottom: 1px dashed var(--line); }
@@ -630,6 +651,7 @@
         <span class="count" id="breadsCount"></span>
       </div>
       <p style="margin:0;color:var(--ink-2);font-size:.85rem">روی هر نان بزن تا دستورهایی که با همون نان درست می‌شن رو ببینی.</p>
+      <p class="sync-note" id="syncNote" hidden></p>
       <div class="bread-list" id="breadList"></div>
     </section>
 
@@ -777,6 +799,16 @@
     { id: "b11", name: "تست چندغله",                   short: "تست چندغله",       price: 175000, unit: "یک بسته", tone: "olive", art: "toastloaf",
       desc: "خمیرترش با جو دوسر، جوی دوسر، چاودار و گندم کامل." }
   ];
+
+  // Runtime price/stock fields every bread carries, kept separate from the
+  // hand-written copy above. loadLivePrices() below overwrites just these
+  // three per id after fetching data/prices.json — never name/desc/art/tone.
+  BREADS.forEach(function (b) {
+    b.available = true;
+    b.stock = null;      // small integer = "low stock" pill; null = plenty
+    b.priceLive = false; // true once a live sync value has been applied
+  });
+  var pricesUpdatedAt = null;
 
   var MEALS = ["صبحانه", "ناهار", "شام", "سوپ و سالاد", "میان‌وعده", "مهمانی", "شیرین"];
 
@@ -1306,19 +1338,39 @@
     }).join("");
   }
 
+  function stockBadge(b) {
+    if (!b.available) return '<span class="stock-badge is-out">ناموجود</span>';
+    if (typeof b.stock === "number" && b.stock > 0 && b.stock <= 5) {
+      return '<span class="stock-badge is-low">فقط ' + fa(b.stock) + ' عدد باقی</span>';
+    }
+    return "";
+  }
+
   function renderBreads() {
     $("breadsCount").textContent = fa(BREADS.length) + " نان";
     $("breadList").innerHTML = BREADS.map(function (b) {
       var n = RECIPES.filter(function (r) { return r.bread === b.id; }).length;
-      return '<button class="bread" type="button" data-bread="' + b.id + '">' +
+      return '<button class="bread' + (b.available ? "" : " is-out") + '" type="button" data-bread="' + b.id + '">' +
         '<span class="bread-art" style="' + TONE_VARS[b.tone] + '">' + ART[b.art] + '</span>' +
         '<span class="bread-main">' +
           '<h3 class="bread-name">' + esc(b.name) + '</h3>' +
           '<p class="bread-desc">' + esc(b.desc) + '</p>' +
-          '<span class="bread-foot"><b class="price">' + toman(b.price) + '</b><i class="dot" style="width:3px;height:3px;border-radius:50%;background:currentColor;display:inline-block"></i><span>' + esc(b.unit) + '</span><i class="dot" style="width:3px;height:3px;border-radius:50%;background:currentColor;display:inline-block"></i><span>' + fa(n) + ' دستور</span></span>' +
+          '<span class="bread-foot"><b class="price">' + toman(b.price) + '</b><i class="dot" style="width:3px;height:3px;border-radius:50%;background:currentColor;display:inline-block"></i><span>' + esc(b.unit) + '</span><i class="dot" style="width:3px;height:3px;border-radius:50%;background:currentColor;display:inline-block"></i><span>' + fa(n) + ' دستور</span>' + stockBadge(b) + '</span>' +
         '</span>' +
       '</button>';
     }).join("");
+  }
+
+  function renderSyncNote() {
+    var note = $("syncNote");
+    if (!pricesUpdatedAt) { note.hidden = true; return; }
+    var mins = Math.max(0, Math.round((Date.now() - pricesUpdatedAt) / 60000));
+    var when = mins < 1 ? "همین الان" :
+      mins < 60 ? fa(mins) + " دقیقه پیش" :
+      mins < 60 * 24 ? fa(Math.round(mins / 60)) + " ساعت پیش" :
+      fa(Math.round(mins / 1440)) + " روز پیش";
+    note.hidden = false;
+    note.textContent = "قیمت و موجودی از اسنپ‌فود، به‌روزرسانی‌شده " + when + ".";
   }
 
   function renderSaved() {
@@ -1378,10 +1430,12 @@
         '<div class="fact"><dt>سطح</dt><dd>' + esc(r.level) + '</dd></div>' +
       '</dl>' +
 
-      (b ? '<div class="base-bread">' +
+      (b ? '<div class="base-bread' + (b.available ? "" : " is-out") + '">' +
         '<span class="bread-art" style="' + TONE_VARS[b.tone] + '">' + ART[b.art] + '</span>' +
-        '<span class="t"><span>نانِ پایه</span><b>' + esc(b.name) + '</b><span style="color:var(--kraft);font-weight:600">' + toman(b.price) + '</span></span>' +
-        '<a class="order-btn" href="' + ORDER_URL + '" target="_blank" rel="noopener">سفارش</a>' +
+        '<span class="t"><span>نانِ پایه</span><b>' + esc(b.name) + '</b><span style="color:var(--kraft);font-weight:600">' + toman(b.price) + '</span>' + stockBadge(b) + '</span>' +
+        (b.available
+          ? '<a class="order-btn" href="' + ORDER_URL + '" target="_blank" rel="noopener">سفارش</a>'
+          : '<span class="order-btn" style="opacity:.5;pointer-events:none">ناموجود</span>') +
       '</div>' : "") +
 
       '<section class="sheet-section">' +
@@ -1572,6 +1626,38 @@
     if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 
+  /* ---------------- live prices ---------------- */
+
+  var PRICES_URL = "data/prices.json";
+
+  function applyPrices(data) {
+    if (!data || !data.items) return;
+    // Only a real sync (source:"snappfood" with a timestamp) earns the "تازه
+    // به‌روزرسانی‌شده" note — the manual seed file must stay silent about it.
+    pricesUpdatedAt = (data.source === "snappfood" && data.updatedAt) ? new Date(data.updatedAt).getTime() : null;
+    BREADS.forEach(function (b) {
+      var live = data.items[b.id];
+      if (!live) return;
+      if (typeof live.price === "number") { b.price = live.price; b.priceLive = true; }
+      if (typeof live.available === "boolean") b.available = live.available;
+      b.stock = (typeof live.stock === "number") ? live.stock : null;
+    });
+    renderBreads();
+    renderSyncNote();
+    if (state.view === "recipes") renderRecipes();
+    var sheet = $("sheet");
+    if (!sheet.hidden && sheet.dataset.recipe) openRecipe(sheet.dataset.recipe);
+  }
+
+  function loadLivePrices() {
+    // Cheap cache-buster: keeps the service worker's "network first, cache
+    // fallback" from ever serving a same-session stale response twice.
+    fetch(PRICES_URL + "?t=" + Date.now(), { cache: "no-store" })
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(applyPrices)
+      .catch(function () { /* offline, or not deployed yet — bundled prices stand */ });
+  }
+
   /* ---------------- boot ---------------- */
 
   renderMealRail();
@@ -1579,6 +1665,7 @@
   renderBreads();
   renderSaved();
   setView("recipes");
+  loadLivePrices();
 })();
 </script>
 
